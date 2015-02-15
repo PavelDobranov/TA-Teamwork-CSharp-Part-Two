@@ -1,0 +1,9 @@
+﻿namespace GalacticNinja
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+}
