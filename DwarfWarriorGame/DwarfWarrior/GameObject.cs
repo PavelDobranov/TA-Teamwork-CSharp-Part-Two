@@ -10,6 +10,7 @@
 
         public GameObject(Coordinate topLeftPosition, int health, int damage, Coordinate speed, char[,] body)
         {
+            this.Type = this.GetType().Name;
             this.TopLeftPosition = topLeftPosition;
             this.Health = health;
             this.Damage = damage;
@@ -18,7 +19,7 @@
             this.IsDestroyed = false;
         }
 
-        public string Type { get; protected set; }
+        public string Type {get; private set; }
 
         public Coordinate TopLeftPosition { get; private set; }
 

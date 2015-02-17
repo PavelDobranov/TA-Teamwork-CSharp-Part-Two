@@ -1,16 +1,30 @@
-﻿using System;
-
-namespace DwarfWarrior
+﻿namespace DwarfWarrior
 {
+    using System;
+
     public static class ConsoleUIObjects
     {
+        public const ConsoleColor PlayerColor = ConsoleColor.Cyan;
+
+        public const ConsoleColor BattlecruiserColor = ConsoleColor.Magenta;
+
+        public const ConsoleColor CarrierColor = ConsoleColor.Yellow;
+
+        public const ConsoleColor DragonColor = ConsoleColor.Yellow;
+
+        public const ConsoleColor StealtColor = ConsoleColor.Blue;
+
+        public const ConsoleColor ShellColor = ConsoleColor.Green;
+
+        public const ConsoleColor PalletColor = ConsoleColor.Red;
+
         public static char[,] PlayerBody()
         {
             return new char[,]
             {
-                { '>', '\\', '-', '-', '(', '@', ')', '-', '\\', ' ' },
-                { '>', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>' },
-                { '>', '/', '-', '-', '-', '-', '-', '-', '/', ' ' },
+                {'>', '\\', '-', '-', '(', '@', ')', '-', '\\', ' '},
+                {'>', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
+                {'>', '/', '-', '-', '-', '-', '-', '-', '/', ' '}
             };
         }
 
@@ -57,41 +71,6 @@ namespace DwarfWarrior
         public static char[,] PalletBody()
         {
             return new char[,] { { '*' } };
-        }
-
-        public static ConsoleColor PlayerColor()
-        {
-            return ConsoleColor.Cyan;
-        }
-
-        public static ConsoleColor BattlecruiserColor()
-        {
-            return ConsoleColor.Magenta;
-        }
-
-        public static ConsoleColor CarrierColor()
-        {
-            return ConsoleColor.Yellow;
-        }
-
-        public static ConsoleColor DragonColor()
-        {
-            return ConsoleColor.Yellow;
-        }
-
-        public static ConsoleColor StealtColor()
-        {
-            return ConsoleColor.Blue;
-        }
-
-        public static ConsoleColor ShellColor()
-        {
-            return ConsoleColor.Green;
-        }
-
-        public static ConsoleColor PalletColor()
-        {
-            return ConsoleColor.Red;
         }
     }
 }

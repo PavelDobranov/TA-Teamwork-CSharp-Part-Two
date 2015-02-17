@@ -7,8 +7,8 @@
     <ProjectGuid>{6A610882-7B3E-4789-8D08-CF6AB837C2F9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GalacticNinja</RootNamespace>
-    <AssemblyName>GalacticNinja</AssemblyName>
+    <RootNamespace>DwarfWarrior</RootNamespace>
+    <AssemblyName>DwarfWarrior</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,13 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battlecruiser.cs" />
+    <Compile Include="Carrier.cs" />
     <Compile Include="ConsoleUIObjects.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="Dragon.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="ObjectType.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
+    <Compile Include="Interfaces\IGameObjectProducer.cs" />
     <Compile Include="Interfaces\IRenderable.cs" />
+    <Compile Include="GameObjectsFactory.cs" />
+    <Compile Include="Pellet.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shell.cs" />
+    <Compile Include="Stealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
