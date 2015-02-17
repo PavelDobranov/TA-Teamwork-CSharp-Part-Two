@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GalacticNinja
+namespace DwarfWarrior
 {
     public static class ConsoleUIObjects
     {
