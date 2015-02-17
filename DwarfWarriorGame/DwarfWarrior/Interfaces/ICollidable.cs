@@ -1,4 +1,4 @@
-﻿namespace GalacticNinja.Interfaces
+﻿namespace DwarfWarrior.Interfaces
 {
     public interface ICollidable
     {

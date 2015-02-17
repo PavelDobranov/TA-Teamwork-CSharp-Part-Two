@@ -1,4 +1,4 @@
-﻿namespace GalacticNinja
+﻿namespace DwarfWarrior
 {
     public struct Coordinate
     {

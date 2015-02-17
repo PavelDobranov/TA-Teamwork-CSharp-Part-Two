@@ -1,4 +1,4 @@
-﻿namespace GalacticNinja
+﻿namespace DwarfWarrior
 {
     using System.Text;
 
