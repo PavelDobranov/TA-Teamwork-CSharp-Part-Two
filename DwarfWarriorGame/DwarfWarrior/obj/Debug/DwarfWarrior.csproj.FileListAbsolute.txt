@@ -1,0 +1,13 @@
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.exe.config
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.pdb
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\obj\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\obj\Debug\GalacticNinja.pdb
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\obj\Debug\DwarfWarrior.csprojResolveAssemblyReference.cache
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarrior\DwarfWarrior\bin\Debug\GalacticNinja.exe.config
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarrior\DwarfWarrior\obj\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarrior\DwarfWarrior\obj\Debug\GalacticNinja.pdb
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarriorGame\DwarfWarrior\bin\Debug\GalacticNinja.exe.config
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarriorGame\DwarfWarrior\obj\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarriorGame\DwarfWarrior\obj\Debug\GalacticNinja.pdb
+C:\Projects\TA-Teamwork-CSharp-Part-Two\DwarfWarriorGame\DwarfWarrior\obj\Debug\DwarfWarrior.csprojResolveAssemblyReference.cache

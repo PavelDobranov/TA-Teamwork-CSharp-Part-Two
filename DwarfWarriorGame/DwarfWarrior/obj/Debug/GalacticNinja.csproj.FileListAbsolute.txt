@@ -1,0 +1,5 @@
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.exe.config
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\bin\Debug\GalacticNinja.pdb
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\obj\Debug\GalacticNinja.exe
+C:\Projects\TA-Teamwork-CSharp-Part-Two\GalacticNinja\GalacticNinja\obj\Debug\GalacticNinja.pdb
