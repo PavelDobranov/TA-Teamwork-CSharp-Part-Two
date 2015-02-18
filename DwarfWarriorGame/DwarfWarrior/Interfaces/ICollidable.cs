@@ -2,7 +2,7 @@
 {
     public interface ICollidable
     {
-        string Type { get; }
+        ObjectType Type { get; }
 
         int Health { get; }
 

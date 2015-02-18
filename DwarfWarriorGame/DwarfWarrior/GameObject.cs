@@ -1,5 +1,6 @@
 ﻿namespace DwarfWarrior
 {
+    using System;
     using System.Text;
 
     using Interfaces;
@@ -10,7 +11,7 @@
 
         public GameObject(Coordinate topLeftPosition, int health, int damage, Coordinate speed, char[,] body)
         {
-            this.Type = this.GetType().Name;
+            this.Type = this.ParseObjectType();
             this.TopLeftPosition = topLeftPosition;
             this.Health = health;
             this.Damage = damage;
@@ -19,7 +20,7 @@
             this.IsDestroyed = false;
         }
 
-        public string Type {get; private set; }
+        public ObjectType Type { get; private set; }
 
         public Coordinate TopLeftPosition { get; private set; }
 
@@ -91,6 +92,13 @@
             }
 
             return result.ToString();
+        }
+
+        private ObjectType ParseObjectType()
+        {
+            string currentObjectType = this.GetType().Name;
+
+            return (ObjectType)Enum.Parse(typeof(ObjectType), currentObjectType);
         }
 
         private char[,] CopyMatrix(char[,] matrix)
