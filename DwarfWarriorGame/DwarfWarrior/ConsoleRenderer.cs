@@ -1,8 +1,8 @@
 ﻿namespace DwarfWarrior
 {
-    using Interfaces;
     using System;
     using System.Text;
+    using Interfaces;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -15,32 +15,49 @@
             this.matrixContextRows = rows;
             this.matrixContextCols = cols;
             this.matrixContext = new char[rows, cols];
+            this.ClearBuffer();
         }
 
         public void AddToBuffer(GameObject obj)
         {
             Coordinate objectTopLeftPosition = obj.TopLeftPosition;
             char[,] objectBody = obj.Body;
-            int objectBodyRows = obj.BodyHeight;
-            int objectBodyCols = obj.BodyWidth;
+            //int objectBodyRows = obj.BodyHeight;
+            //int objectBodyCols = obj.BodyWidth;
+
+            int objectBodyStartRow = obj.TopLeftPosition.Row;
+            int objectBodyStartCol = obj.TopLeftPosition.Col;
+            int objectBodyEndRow = obj.TopLeftPosition.Row + obj.BodyHeight - 1;
+            int objectBodyEndCol = obj.TopLeftPosition.Col + obj.BodyWidth - 1;
 
             int objectBodyCurrentRow = 0;
 
-            for (int row = objectTopLeftPosition.Row; row < objectTopLeftPosition.Row + objectBodyRows; row++)
+            for (int matrixRow = objectBodyStartRow; matrixRow <= objectBodyEndRow; matrixRow++)
             {
                 int objectBodyCurrentCol = 0;
-                for (int col = objectTopLeftPosition.Col; col < objectTopLeftPosition.Col + objectBodyCols; col++)
+                for (int matrixCol = objectBodyStartCol; matrixCol <= objectBodyEndCol; matrixCol++)
                 {
-                    matrixContext[row, col] = objectBody[objectBodyCurrentRow, objectBodyCurrentCol];
+                    if (matrixRow > 0 &&
+                        matrixRow < matrixContext.GetLength(0) &&
+                        matrixCol > 0 &&
+                        matrixCol < matrixContext.GetLength(1))
+                    {
+                        matrixContext[matrixRow, matrixCol] = objectBody[objectBodyCurrentRow, objectBodyCurrentCol];
+                    }
                     ++objectBodyCurrentCol;
                 }
+
                 ++objectBodyCurrentRow;
             }
         }
 
         public void RenderAll()
         {
+            int sceneStartRow = 0;
+            int sceneStartCol = 0;
+            Console.SetCursorPosition(sceneStartRow, sceneStartCol);
             StringBuilder scene = new StringBuilder();
+
             for (int row = 0; row < this.matrixContextRows; row++)
             {
                 for (int col = 0; col < this.matrixContextCols; col++)
@@ -49,6 +66,7 @@
                 }
                 scene.Append(Environment.NewLine);
             }
+            Console.WriteLine(scene.ToString());
         }
 
         public void ClearBuffer()
