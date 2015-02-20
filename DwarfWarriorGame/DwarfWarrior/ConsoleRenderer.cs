@@ -1,0 +1,6 @@
+﻿namespace DwarfWarrior
+{
+    class ConsoleRenderer
+    {
+    }
+}
