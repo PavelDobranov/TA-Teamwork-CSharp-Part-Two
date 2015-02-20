@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Battlecruiser.cs" />
     <Compile Include="Carrier.cs" />
+    <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="ConsoleUIObjects.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Dragon.cs" />

@@ -2,7 +2,7 @@
 {
     public interface IRenderer
     {
-        void AddToBuffer();
+        void AddToBuffer(GameObject obj);
 
         void RenderAll();
 
