@@ -14,7 +14,9 @@
 
         public override bool CanCollideWith(ICollidable other)
         {
-            throw new System.NotImplementedException();
+            return other.Type == ObjectType.Pellet ||
+                   other.Type == ObjectType.Player ||
+                   other.Type == ObjectType.Shell;
         }
     }
 }
