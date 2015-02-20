@@ -47,6 +47,7 @@
     <Compile Include="ConsoleUIObjects.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Dragon.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Interfaces\IGameController.cs" />
     <Compile Include="Interfaces\IRenderer.cs" />
