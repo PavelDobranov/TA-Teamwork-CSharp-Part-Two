@@ -5,19 +5,14 @@
 
     public class Engine
     {
-        public const int gameRows = 25;
-        public const int gameCols = 50;
-        public const int gameSpeed = 100;
-        
         private ConsoleRenderer renderer;
         // game controller
         List<GameObject> gameObjects;
         // player
 
-
         public Engine()
         {
-            this.renderer = new ConsoleRenderer(Engine.gameRows, Engine.gameCols);
+            this.renderer = new ConsoleRenderer(ConsoleUIObjects.GameRows, ConsoleUIObjects.GameCols);
             this.gameObjects = new List<GameObject>();
         }
 
@@ -25,30 +20,42 @@
         {
             this.gameObjects.Add(obj);
         }
+
         public void Run()
         {
-
-            int counter = 0;
             while (true)
             {
                 foreach (var gameObject in this.gameObjects)
                 {
-                    renderer.AddToBuffer(gameObject);
+                    this.renderer.AddToBuffer(gameObject);
                 }
 
-                renderer.RenderAll();
-                Thread.Sleep(gameSpeed);
-                renderer.ClearBuffer();
+                this.renderer.RenderAll();
+
+                Thread.Sleep(ConsoleUIObjects.GameSpeed);
+
+                this.renderer.ClearBuffer();
+
                 foreach (var gameObject in this.gameObjects)
                 {
                     gameObject.Update();
 
-                    if (gameObject.IsDestroyed)
+                    if (gameObject.TopLeftPosition.Col < 0 - gameObject.BodyWidth ||
+                        gameObject.TopLeftPosition.Row < 0 - gameObject.BodyHeight ||
+                        gameObject.TopLeftPosition.Col >= ConsoleUIObjects.GameCols ||
+                        gameObject.TopLeftPosition.Row >= ConsoleUIObjects.GameRows)
                     {
-                        counter++;
+                        gameObject.IsDestroyed = true;
                     }
-                    if (counter == 4) break;
                 }
+
+                this.gameObjects.RemoveAll(o => o.IsDestroyed);
+
+                if (this.gameObjects.Count == 0)
+                {
+                    break;
+                }
+
             }
         }
     }

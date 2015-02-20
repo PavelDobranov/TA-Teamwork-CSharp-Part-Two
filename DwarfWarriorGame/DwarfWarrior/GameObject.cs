@@ -58,7 +58,7 @@
             }
         }
 
-        public bool IsDestroyed { get; private set; }
+        public bool IsDestroyed { get; set; }
 
         public abstract bool CanCollideWith(ICollidable other);
 
@@ -76,13 +76,7 @@
         {
             this.TopLeftPosition += this.Speed;
 
-            if( this.TopLeftPosition.Col < 0 - this.BodyWidth ||
-                this.TopLeftPosition.Row < 0 - this.BodyHeight ||
-                this.TopLeftPosition.Col >= ConsoleUIObjects.GameCols ||
-                this.TopLeftPosition.Row >= ConsoleUIObjects.GameRows)
-            {
-                this.IsDestroyed = true;
-            }
+           
         }
 
         public override string ToString()

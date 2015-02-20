@@ -4,9 +4,9 @@
 
     public static class ConsoleUIObjects
     {
-        public const int GameRows = 25;
-
+        public const int GameRows = 20;
         public const int GameCols = 50;
+        public const int GameSpeed = 100;
 
         public const ConsoleColor PlayerColor = ConsoleColor.Cyan;
 

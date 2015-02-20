@@ -2,48 +2,49 @@
 {
     using System;
     using System.Text;
+
     using Interfaces;
 
     public class ConsoleRenderer : IRenderer
     {
-        private int matrixContextRows;
-        private int matrixContextCols;
-        private char[,] matrixContext;
+        private int bufferRows;
+        private int bufferColumns;
+        private char[,] buffer;
 
-        public ConsoleRenderer(int rows, int cols)
+        public ConsoleRenderer(int rows, int columns)
         {
-            this.matrixContextRows = rows;
-            this.matrixContextCols = cols;
-            this.matrixContext = new char[rows, cols];
+            this.bufferRows = rows;
+            this.bufferColumns = columns;
+            this.buffer = new char[rows, columns];
             this.ClearBuffer();
         }
 
-        public void AddToBuffer(GameObject obj)
+        public void AddToBuffer(GameObject gameObject)
         {
-            Coordinate objectTopLeftPosition = obj.TopLeftPosition;
-            char[,] objectBody = obj.Body;
-            //int objectBodyRows = obj.BodyHeight;
-            //int objectBodyCols = obj.BodyWidth;
+            Coordinate objectTopLeftPosition = gameObject.TopLeftPosition;
+            
+            char[,] objectBody = gameObject.Body;
 
-            int objectBodyStartRow = obj.TopLeftPosition.Row;
-            int objectBodyStartCol = obj.TopLeftPosition.Col;
-            int objectBodyEndRow = obj.TopLeftPosition.Row + obj.BodyHeight - 1;
-            int objectBodyEndCol = obj.TopLeftPosition.Col + obj.BodyWidth - 1;
+            int objectBodyStartRow = gameObject.TopLeftPosition.Row;
+            int objectBodyStartCol = gameObject.TopLeftPosition.Col;
+            
+            int objectBodyEndRow = gameObject.TopLeftPosition.Row + gameObject.BodyHeight - 1;
+            int objectBodyEndCol = gameObject.TopLeftPosition.Col + gameObject.BodyWidth - 1;
 
             int objectBodyCurrentRow = 0;
 
             for (int matrixRow = objectBodyStartRow; matrixRow <= objectBodyEndRow; matrixRow++)
             {
                 int objectBodyCurrentCol = 0;
+                
                 for (int matrixCol = objectBodyStartCol; matrixCol <= objectBodyEndCol; matrixCol++)
                 {
-                    if (matrixRow > 0 &&
-                        matrixRow < matrixContext.GetLength(0) &&
-                        matrixCol > 0 &&
-                        matrixCol < matrixContext.GetLength(1))
+                    if (matrixRow >= 0 && matrixRow < buffer.GetLength(0) &&
+                        matrixCol >= 0 && matrixCol < buffer.GetLength(1))
                     {
-                        matrixContext[matrixRow, matrixCol] = objectBody[objectBodyCurrentRow, objectBodyCurrentCol];
+                        buffer[matrixRow, matrixCol] = objectBody[objectBodyCurrentRow, objectBodyCurrentCol];
                     }
+                    
                     ++objectBodyCurrentCol;
                 }
 
@@ -55,27 +56,30 @@
         {
             int sceneStartRow = 0;
             int sceneStartCol = 0;
+
             Console.SetCursorPosition(sceneStartRow, sceneStartCol);
+
             StringBuilder scene = new StringBuilder();
 
-            for (int row = 0; row < this.matrixContextRows; row++)
+            for (int row = 0; row < this.bufferRows; row++)
             {
-                for (int col = 0; col < this.matrixContextCols; col++)
+                for (int col = 0; col < this.bufferColumns; col++)
                 {
-                    scene.Append(matrixContext[row, col]);
+                    scene.Append(buffer[row, col]);
                 }
                 scene.Append(Environment.NewLine);
             }
+
             Console.WriteLine(scene.ToString());
         }
 
         public void ClearBuffer()
         {
-            for (int row = 0; row < this.matrixContextRows; row++)
+            for (int row = 0; row < this.bufferRows; row++)
             {
-                for (int col = 0; col < this.matrixContextCols; col++)
+                for (int col = 0; col < this.bufferColumns; col++)
                 {
-                    this.matrixContext[row, col] = ' ';
+                    this.buffer[row, col] = ' ';
                 }
             }
         }
