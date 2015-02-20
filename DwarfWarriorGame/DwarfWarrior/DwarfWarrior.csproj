@@ -47,6 +47,9 @@
     <Compile Include="Coordinate.cs" />
     <Compile Include="Dragon.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Interfaces\IGameController.cs" />
+    <Compile Include="Interfaces\IRenderer.cs" />
+    <Compile Include="KeyboardController.cs" />
     <Compile Include="ObjectType.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IGameObjectProducer.cs" />
@@ -61,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram\DwarfWarriorClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
