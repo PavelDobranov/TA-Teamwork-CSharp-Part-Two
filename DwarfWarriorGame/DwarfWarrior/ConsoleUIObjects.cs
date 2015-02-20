@@ -4,6 +4,10 @@
 
     public static class ConsoleUIObjects
     {
+        public const int GameRows = 25;
+
+        public const int GameCols = 50;
+
         public const ConsoleColor PlayerColor = ConsoleColor.Cyan;
 
         public const ConsoleColor BattlecruiserColor = ConsoleColor.Magenta;
@@ -18,6 +22,7 @@
 
         public const ConsoleColor PalletColor = ConsoleColor.Red;
 
+        
         public static char[,] PlayerBody()
         {
             return new char[,]

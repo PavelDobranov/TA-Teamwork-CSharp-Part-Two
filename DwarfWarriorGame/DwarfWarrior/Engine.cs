@@ -27,6 +27,8 @@
         }
         public void Run()
         {
+
+            int counter = 0;
             while (true)
             {
                 foreach (var gameObject in this.gameObjects)
@@ -37,10 +39,15 @@
                 renderer.RenderAll();
                 Thread.Sleep(gameSpeed);
                 renderer.ClearBuffer();
-
                 foreach (var gameObject in this.gameObjects)
                 {
                     gameObject.Update();
+
+                    if (gameObject.IsDestroyed)
+                    {
+                        counter++;
+                    }
+                    if (counter == 4) break;
                 }
             }
         }

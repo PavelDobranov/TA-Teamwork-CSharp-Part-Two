@@ -75,6 +75,14 @@
         public virtual void Update()
         {
             this.TopLeftPosition += this.Speed;
+
+            if( this.TopLeftPosition.Col < 0 - this.BodyWidth ||
+                this.TopLeftPosition.Row < 0 - this.BodyHeight ||
+                this.TopLeftPosition.Col >= ConsoleUIObjects.GameCols ||
+                this.TopLeftPosition.Row >= ConsoleUIObjects.GameRows)
+            {
+                this.IsDestroyed = true;
+            }
         }
 
         public override string ToString()

@@ -19,12 +19,14 @@
 
             var Engine = new Engine();
             var factory = new GameObjectsFactory();
-            Engine.AddGameObject(factory.ProduceObject(ObjectType.Battlecruiser, 0, 50, 0, -1));
-            Engine.AddGameObject(factory.ProduceObject(ObjectType.Carrier, 5, 50, 0, -1));
-            Engine.AddGameObject(factory.ProduceObject(ObjectType.Dragon, 10, 60, 0, -1));
-            Engine.AddGameObject(factory.ProduceObject(ObjectType.Stealth, 20, 70, 0, -1));
+
+            Engine.AddGameObject(factory.ProduceObject(ObjectType.Battlecruiser, 0, ConsoleUIObjects.GameCols - 1, 0, -1));
+            Engine.AddGameObject(factory.ProduceObject(ObjectType.Carrier, 5, ConsoleUIObjects.GameCols - 1, 0, -1));
+            Engine.AddGameObject(factory.ProduceObject(ObjectType.Dragon, 10, ConsoleUIObjects.GameCols - 1, 0, -1));
+            Engine.AddGameObject(factory.ProduceObject(ObjectType.Stealth, 20, ConsoleUIObjects.GameCols - 1, 0, -1));
 
             Engine.Run();
+
             Console.ReadLine();
         }
     }
