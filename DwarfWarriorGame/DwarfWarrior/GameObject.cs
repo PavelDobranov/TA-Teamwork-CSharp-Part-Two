@@ -22,7 +22,7 @@
 
         public ObjectType Type { get; private set; }
 
-        public Coordinate TopLeftPosition { get; private set; }
+        public Coordinate TopLeftPosition { get; protected set; }
 
         public int Health { get; private set; }
 

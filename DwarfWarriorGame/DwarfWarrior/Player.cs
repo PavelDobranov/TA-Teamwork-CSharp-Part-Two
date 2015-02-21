@@ -20,5 +20,22 @@
                    other.Type == ObjectType.Pellet ||
                    other.Type == ObjectType.Stealth;
         }
+
+        public void MoveLeft()
+        {
+            this.TopLeftPosition += new Coordinate(0, -1);
+        }
+        public void MoveRigth()
+        {
+            this.TopLeftPosition += new Coordinate(0, +1);
+        }
+        public void MoveUp()
+        {
+            this.TopLeftPosition += new Coordinate(-1, 0);
+        }
+        public void MoveDown()
+        {
+            this.TopLeftPosition += new Coordinate(+1, 0);
+        }
     }
 }
