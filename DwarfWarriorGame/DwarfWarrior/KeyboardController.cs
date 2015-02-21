@@ -4,7 +4,7 @@
 
     using Interfaces;
 
-    public class KeyboardInterface : IGameController
+    public class KeyboardController : IGameController
     {
         public event EventHandler OnUpPressed;
 
@@ -18,7 +18,7 @@
 
         public void ProcessInput()
         {
-            if (Console.KeyAvailable)
+            while (Console.KeyAvailable)
             {
                 var keyInfo = Console.ReadKey();
 

@@ -2,23 +2,35 @@
 {
     using System.Collections.Generic;
     using System.Threading;
+    using Interfaces;
+    using System;
 
     public class Engine
     {
-        private ConsoleRenderer renderer;
-        // game controller
+        private IGameController gameController;
+        private IRenderer renderer;
+        private GameObjectsFactory objectFactory;
         List<GameObject> gameObjects;
-        // player
+        Player player;
 
-        public Engine()
+        public Engine(IGameController gameController, IRenderer renderer, GameObjectsFactory objectFactory, Player player)
         {
-            this.renderer = new ConsoleRenderer(ConsoleUIObjects.GameRows, ConsoleUIObjects.GameCols);
+            this.gameController = gameController;
+            this.renderer = renderer;
+            this.objectFactory = objectFactory;
             this.gameObjects = new List<GameObject>();
+            this.player = player;
+
         }
 
         public void AddGameObject(GameObject obj)
         {
             this.gameObjects.Add(obj);
+        }
+
+        public void AddPlayer()
+        {
+            gameObjects.Add(this.player);
         }
 
         public void Run()
@@ -33,6 +45,8 @@
                 this.renderer.RenderAll();
 
                 Thread.Sleep(ConsoleUIObjects.GameSpeed);
+
+                gameController.ProcessInput();
 
                 this.renderer.ClearBuffer();
 
@@ -51,12 +65,37 @@
 
                 this.gameObjects.RemoveAll(o => o.IsDestroyed);
 
-                if (this.gameObjects.Count == 0)
-                {
-                    break;
-                }
+                //if (this.gameObjects.Count == 0)
+                //{
+                //    break;
+                //}
 
             }
+        }
+
+        public void MovePlayerUp()
+        {
+            if (player.TopLeftPosition.Row > 0)
+            {
+                this.player.MoveUp();
+                
+            }
+
+        }
+
+        public void MovePlayerDown()
+        {
+            this.player.MoveDown();
+        }
+
+        public void MovePlayerLeft()
+        {
+            this.player.MoveLeft();
+        }
+
+        public void MovePlayerRight()
+        {
+            this.player.MoveRigth();
         }
     }
 }
