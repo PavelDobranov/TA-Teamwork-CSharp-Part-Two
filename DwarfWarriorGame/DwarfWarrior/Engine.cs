@@ -78,7 +78,7 @@
             if (player.TopLeftPosition.Row > 0)
             {
                 this.player.MoveUp();
-                
+
             }
 
         }
@@ -96,6 +96,17 @@
         public void MovePlayerRight()
         {
             this.player.MoveRigth();
+        }
+
+        internal void PlayerShoot()
+        {
+            Coordinate shellPosition = player.GetShootingPoint();
+            int shellSpeedRow = 0;
+            int shellSpeedCol = 1;
+
+            GameObject shell = objectFactory.ProduceObject(ObjectType.Battlecruiser, shellPosition.Row, shellPosition.Col, shellSpeedRow, shellSpeedCol) as Battlecruiser;
+
+            this.AddGameObject(shell);
         }
     }
 }

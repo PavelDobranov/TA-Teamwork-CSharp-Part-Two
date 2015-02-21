@@ -63,6 +63,11 @@
                 }
             };
 
+            keyboard.OnActionPressed += (sender, eventinfo) =>
+            {
+                engine.PlayerShoot();
+            };
+
 
             engine.Run();
 
