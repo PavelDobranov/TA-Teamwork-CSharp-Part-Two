@@ -21,12 +21,14 @@
                    other.Type == ObjectType.Stealth;
         }
 
-        public Coordinate GetShootingPoint()
+        public Coordinate[] GetShootingPoints()
         {
-            int row = this.TopLeftPosition.Row + 1;
-            int col = this.TopLeftPosition.Col + this.BodyWidth;
+            int currentShootingPointRow = this.TopLeftPosition.Row + 1;
+            int currentShootingPointCol = this.TopLeftPosition.Col + this.BodyWidth;
+            Coordinate[] shootingPoints = new Coordinate[1];
+            shootingPoints[0] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
 
-            return new Coordinate(row, col);
+            return shootingPoints;
         }
 
         public void MoveLeft()
