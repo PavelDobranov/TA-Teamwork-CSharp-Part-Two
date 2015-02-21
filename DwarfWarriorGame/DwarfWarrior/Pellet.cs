@@ -14,7 +14,12 @@
 
         public override bool CanCollideWith(ICollidable other)
         {
-            throw new System.NotImplementedException();
+            return other.Type == ObjectType.Battlecruiser ||
+                   other.Type == ObjectType.Carrier ||
+                   other.Type == ObjectType.Dragon ||
+                   other.Type == ObjectType.Player ||
+                   other.Type == ObjectType.Shell ||
+                   other.Type == ObjectType.Stealth;
         }
     }
 }
