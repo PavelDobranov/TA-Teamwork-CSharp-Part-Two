@@ -104,9 +104,10 @@
             int shellSpeedRow = 0;
             int shellSpeedCol = 1;
 
-            GameObject shell = objectFactory.ProduceObject(ObjectType.Battlecruiser, shellPosition.Row, shellPosition.Col, shellSpeedRow, shellSpeedCol) as Battlecruiser;
+            GameObject shell = objectFactory.ProduceObject(ObjectType.Shell, shellPosition.Row, shellPosition.Col, shellSpeedRow, shellSpeedCol) as Shell;
 
             this.AddGameObject(shell);
         }
+
     }
 }
