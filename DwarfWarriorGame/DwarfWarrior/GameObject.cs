@@ -72,6 +72,8 @@
             }
         }
 
+        public abstract Coordinate[] GetShootingPoints();
+
         public virtual void Update()
         {
             this.TopLeftPosition += this.Speed;

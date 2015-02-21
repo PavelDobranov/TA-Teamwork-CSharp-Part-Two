@@ -98,16 +98,47 @@
             this.player.MoveRigth();
         }
 
-        internal void PlayerShoot()
+        public void ObjectProduceShoot(GameObject gameObject)
         {
-            Coordinate shellPosition = player.GetShootingPoint();
-            int shellSpeedRow = 0;
-            int shellSpeedCol = 1;
+            Coordinate[] shootingPoints = gameObject.GetShootingPoints();
+            int shootingPointSpeedRow = 0;
+            int shootingPointSpeedCol = 0;
+            ObjectType producedObjectType = ObjectType.Pellet;
 
-            GameObject shell = objectFactory.ProduceObject(ObjectType.Shell, shellPosition.Row, shellPosition.Col, shellSpeedRow, shellSpeedCol) as Shell;
+            switch (gameObject.Type)
+            {
+                case ObjectType.Player:
+                    shootingPointSpeedRow = 0;
+                    shootingPointSpeedCol = 1;
+                    producedObjectType = ObjectType.Shell;
+                    break;
+                case ObjectType.Battlecruiser:
+                case ObjectType.Carrier:
+                    shootingPointSpeedRow = 0;
+                    shootingPointSpeedCol = -1;
+                    break;
+                case ObjectType.Dragon:
+                    shootingPointSpeedRow = -1;
+                    shootingPointSpeedCol = -1;
+                    break;
+                case ObjectType.Stealth:
+                    shootingPointSpeedRow = 1;
+                    shootingPointSpeedCol = 0;
+                    break;
+            }
 
-            this.AddGameObject(shell);
+            int shootingPointRow = shootingPoints[0].Row;
+            int shootingPointCol = shootingPoints[0].Col;
+
+            for (int point = 0; point < shootingPoints.Length; point++)
+            {
+                GameObject cuurentObject = objectFactory.ProduceObject(producedObjectType, shootingPointRow, shootingPointCol, shootingPointSpeedRow, shootingPointSpeedCol);
+
+                this.AddGameObject(cuurentObject);
+
+                ++shootingPointCol;
+                ++shootingPointSpeedCol;
+            }
         }
-
     }
 }

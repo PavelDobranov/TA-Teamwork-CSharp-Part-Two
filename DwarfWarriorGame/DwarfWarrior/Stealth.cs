@@ -12,7 +12,14 @@
         {
         }
 
-        public Coordinate[] GetShootingPoints()
+        public override bool CanCollideWith(ICollidable other)
+        {
+            return other.Type == ObjectType.Pellet ||
+                   other.Type == ObjectType.Player ||
+                   other.Type == ObjectType.Shell;
+        }
+
+        public override Coordinate[] GetShootingPoints()
         {
             int currentShootingPointRow = this.TopLeftPosition.Row + 1;
             int currentShootingPointCol = this.TopLeftPosition.Col + 2;

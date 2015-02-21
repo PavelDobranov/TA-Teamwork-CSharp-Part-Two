@@ -12,6 +12,11 @@
         {
         }
 
+        public override Coordinate[] GetShootingPoints()
+        {
+            return null;
+        }
+
         public override bool CanCollideWith(ICollidable other)
         {
             return other.Type == ObjectType.Battlecruiser ||

@@ -25,7 +25,7 @@
             var engine = new Engine(keyboard, renderer, factory, player);
             engine.AddPlayer();
 
-            //engine.AddGameObject(factory.ProduceObject(ObjectType.Battlecruiser, 0, ConsoleUIObjects.GameCols - 1, 0, -1));
+            engine.AddGameObject(factory.ProduceObject(ObjectType.Battlecruiser, 0, 15, 0, 0));
             //engine.AddGameObject(factory.ProduceObject(ObjectType.Carrier, 4, ConsoleUIObjects.GameCols - 1, 0, -1));
             //engine.AddGameObject(factory.ProduceObject(ObjectType.Dragon, 8, ConsoleUIObjects.GameCols - 1, 0, -1));
             //engine.AddGameObject(factory.ProduceObject(ObjectType.Stealth, 12, ConsoleUIObjects.GameCols - 1, 0, -1));
@@ -65,7 +65,7 @@
 
             keyboard.OnActionPressed += (sender, eventinfo) =>
             {
-                engine.PlayerShoot();
+                engine.ObjectProduceShoot(player);
             };
 
 

@@ -18,12 +18,14 @@
                    other.Type == ObjectType.Shell ||
                    other.Type == ObjectType.Pellet;
         }
-
-        public Coordinate[] GetShootingPoints()
+       
+        public override Coordinate[] GetShootingPoints()
         {
             int currentShootingPointRow = this.TopLeftPosition.Row + 1;
             int currentShootingPointCol = this.TopLeftPosition.Col - 1;
+
             Coordinate[] shootingPoints = new Coordinate[1];
+
             shootingPoints[0] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
 
             return shootingPoints;

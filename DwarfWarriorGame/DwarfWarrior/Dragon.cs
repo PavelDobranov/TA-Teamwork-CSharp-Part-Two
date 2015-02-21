@@ -20,11 +20,12 @@
                    other.Type == ObjectType.Shell;
         }
 
-        public Coordinate[] GetShootingPoints()
+        public override Coordinate[] GetShootingPoints()
         {
             int shootingPointsCounts = 3;
             int currentShootingPointRow = this.TopLeftPosition.Row - 1;
             int currentShootingPointCol = this.TopLeftPosition.Col + 1;
+
             Coordinate[] shootingPoints = new Coordinate[shootingPointsCounts];
 
             for (int i = 0; i < shootingPointsCounts; i++)
@@ -32,6 +33,7 @@
                 shootingPoints[i] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
                 ++currentShootingPointCol;
             }
+
             return shootingPoints;
         }
     }
