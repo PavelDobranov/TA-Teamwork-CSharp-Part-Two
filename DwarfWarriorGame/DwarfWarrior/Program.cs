@@ -78,7 +78,7 @@
 
 
             var keyboard = new KeyboardController();
-            var renderer = new ConsoleRenderer(ConsoleUIObjects.GameRows, ConsoleUIObjects.GameCols);
+            var renderer = new ConsoleRenderer(ConsoleUI.GameRows, ConsoleUI.GameCols);
             var factory = new GameObjectsFactory();
             var player = factory.ProduceObject(ObjectType.Player, 10, 10, 0, 0) as Player;
             var engine = new Engine(keyboard, renderer, factory, player);
@@ -100,7 +100,7 @@
 
             keyboard.OnDownPressed += (sender, eventinfo) =>
             {
-                if (player.TopLeftPosition.Row < ConsoleUIObjects.GameRows - player.BodyHeight)
+                if (player.TopLeftPosition.Row < ConsoleUI.GameRows - player.BodyHeight)
                 {
                     engine.MovePlayerDown();
                 }
@@ -116,7 +116,7 @@
 
             keyboard.OnRightPressed += (sender, eventinfo) =>
             {
-                if (player.TopLeftPosition.Col < ConsoleUIObjects.GameCols - player.BodyWidth)
+                if (player.TopLeftPosition.Col < ConsoleUI.GameCols - player.BodyWidth)
                 {
                     engine.MovePlayerRight();
                 }

@@ -14,19 +14,19 @@
             switch (type)
             {
                 case ObjectType.Player:
-                    return new Player(objectPosition, objectSpeed, ConsoleUIObjects.PlayerBody());
+                    return new Player(objectPosition, objectSpeed, ConsoleUI.PlayerBody());
                 case ObjectType.Battlecruiser:
-                    return new Battlecruiser(objectPosition, objectSpeed, ConsoleUIObjects.BattlecruiserBody());
+                    return new Battlecruiser(objectPosition, objectSpeed, ConsoleUI.BattlecruiserBody());
                 case ObjectType.Carrier:
-                    return new Carrier(objectPosition, objectSpeed, ConsoleUIObjects.CarrierBody());
+                    return new Carrier(objectPosition, objectSpeed, ConsoleUI.CarrierBody());
                 case ObjectType.Dragon:
-                    return new Dragon(objectPosition, objectSpeed, ConsoleUIObjects.DragonBody());
+                    return new Dragon(objectPosition, objectSpeed, ConsoleUI.DragonBody());
                 case ObjectType.Stealth:
-                    return new Stealth(objectPosition, objectSpeed, ConsoleUIObjects.StealtBody());
+                    return new Stealth(objectPosition, objectSpeed, ConsoleUI.StealtBody());
                 case ObjectType.Shell:
-                    return new Shell(objectPosition, objectSpeed, ConsoleUIObjects.ShellBody());
+                    return new Shell(objectPosition, objectSpeed, ConsoleUI.ShellBody());
                 case ObjectType.Pellet:
-                    return new Pellet(objectPosition, objectSpeed, ConsoleUIObjects.PalletBody());
+                    return new Pellet(objectPosition, objectSpeed, ConsoleUI.PalletBody());
                 default:
                     throw new ArgumentException("Invalid game object type", "type");
             }

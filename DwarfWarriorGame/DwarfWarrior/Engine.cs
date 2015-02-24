@@ -1,9 +1,10 @@
 ﻿namespace DwarfWarrior
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
+
     using Interfaces;
-    using System;
 
     public class Engine
     {
@@ -44,7 +45,7 @@
 
                 this.renderer.RenderAll();
 
-                Thread.Sleep(ConsoleUIObjects.GameSpeed);
+                Thread.Sleep(ConsoleUI.GameSpeed);
 
                 gameController.ProcessInput();
 
@@ -56,8 +57,8 @@
 
                     if (gameObject.TopLeftPosition.Col < 0 - gameObject.BodyWidth ||
                         gameObject.TopLeftPosition.Row < 0 - gameObject.BodyHeight ||
-                        gameObject.TopLeftPosition.Col >= ConsoleUIObjects.GameCols ||
-                        gameObject.TopLeftPosition.Row >= ConsoleUIObjects.GameRows)
+                        gameObject.TopLeftPosition.Col >= ConsoleUI.GameCols ||
+                        gameObject.TopLeftPosition.Row >= ConsoleUI.GameRows)
                     {
                         gameObject.IsDestroyed = true;
                     }

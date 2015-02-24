@@ -2,7 +2,7 @@
 {
     using System;
 
-    public static class ConsoleUIObjects
+    public static class ConsoleUI
     {
         public const int GameRows = 20;
         public const int GameCols = 50;
