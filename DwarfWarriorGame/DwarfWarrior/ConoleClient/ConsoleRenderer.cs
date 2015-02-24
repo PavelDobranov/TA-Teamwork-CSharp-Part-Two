@@ -1,9 +1,10 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.ConsoleClient
 {
     using System;
     using System.Text;
 
     using Interfaces;
+    using GameObjects;
 
     public class ConsoleRenderer : IRenderer
     {

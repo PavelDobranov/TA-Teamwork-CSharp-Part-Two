@@ -1,7 +1,6 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
     using Interfaces;
-    using System;
 
     public class Dragon : GameObject, IRenderable, ICollidable
     {

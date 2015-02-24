@@ -1,4 +1,4 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.ConsoleClient
 {
     using System;
 

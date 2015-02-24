@@ -2,7 +2,9 @@
 {
     using System;
 
-    using Interfaces;
+    using DwarfWarrior.ConsoleClient;
+    using DwarfWarrior.GameObjects;
+    using DwarfWarrior.Interfaces;
 
     public class GameObjectsFactory : IGameObjectProducer
     {

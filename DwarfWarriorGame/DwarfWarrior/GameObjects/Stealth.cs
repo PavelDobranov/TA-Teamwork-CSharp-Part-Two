@@ -1,6 +1,6 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
-    using Interfaces;
+    using DwarfWarrior.Interfaces;
 
     public class Stealth : GameObject, IRenderable, ICollidable
     {

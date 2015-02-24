@@ -44,7 +44,7 @@
     <Compile Include="GameObjects\Battlecruiser.cs" />
     <Compile Include="GameObjects\Carrier.cs" />
     <Compile Include="ConoleClient\ConsoleRenderer.cs" />
-    <Compile Include="ConoleClient\ConsoleUIObjects.cs" />
+    <Compile Include="ConoleClient\ConsoleUI.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="GameObjects\Dragon.cs" />
     <Compile Include="Engine.cs" />
@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram\DwarfWarriorClassDiagram.cd" />
+    <None Include="ClassDiagram\DwarfWarriorDiagram.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

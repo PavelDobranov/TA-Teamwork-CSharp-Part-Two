@@ -1,8 +1,8 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameControllers
 {
     using System;
 
-    using Interfaces;
+    using DwarfWarrior.Interfaces;
 
     public class KeyboardController : IGameController
     {
