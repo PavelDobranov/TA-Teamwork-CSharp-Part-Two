@@ -1,8 +1,10 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
-    using Interfaces;
+    using System.Collections.Generic;
 
-    public class Battlecruiser : GameObject, IRenderable, ICollidable
+    using DwarfWarrior.Interfaces;
+
+    public class Battlecruiser : ShootingObject, IRenderable, ICollidable, IShootable
     {
         private const int InitHealth = 3;
         private const int InitDamage = 10;
@@ -14,21 +16,7 @@
 
         public override bool CanCollideWith(ICollidable other)
         {
-            return other.Type == ObjectType.Player ||
-                   other.Type == ObjectType.Shell ||
-                   other.Type == ObjectType.Pellet;
-        }
-       
-        public override Coordinate[] GetShootingPoints()
-        {
-            int currentShootingPointRow = this.TopLeftPosition.Row + 1;
-            int currentShootingPointCol = this.TopLeftPosition.Col - 1;
-
-            Coordinate[] shootingPoints = new Coordinate[1];
-
-            shootingPoints[0] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
-
-            return shootingPoints;
+            return other.Type == ObjectType.Player || other.Type == ObjectType.Shell;
         }
     }
 }

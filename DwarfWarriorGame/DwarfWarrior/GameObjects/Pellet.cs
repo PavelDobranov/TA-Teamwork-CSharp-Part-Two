@@ -1,6 +1,6 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
-    using Interfaces;
+    using DwarfWarrior.Interfaces;
 
     public class Pellet : GameObject, IRenderable, ICollidable
     {
@@ -10,11 +10,6 @@
         public Pellet(Coordinate topLeftPosition, Coordinate speed, char[,] body)
             : base(topLeftPosition, Pellet.InitHealth, Pellet.InitDamage, speed, body)
         {
-        }
-
-        public override Coordinate[] GetShootingPoints()
-        {
-            return null;
         }
 
         public override bool CanCollideWith(ICollidable other)

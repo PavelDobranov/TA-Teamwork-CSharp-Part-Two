@@ -3,7 +3,8 @@
     using System;
     using System.Text;
 
-    using Interfaces;
+    using DwarfWarrior.Interfaces;
+    using System.Collections.Generic;
 
     public abstract class GameObject : IRenderable, ICollidable
     {
@@ -72,13 +73,27 @@
             }
         }
 
-        public abstract Coordinate[] GetShootingPoints();
+        public List<Coordinate> GetCollisionProfile()
+        {
+            List<Coordinate> collisionProfile = new List<Coordinate>(this.BodyWidth * this.BodyHeight);
+
+            for (int row = 0; row < this.BodyHeight; row++)
+            {
+                for (int col = 0; col < this.BodyWidth; col++)
+                {
+                    if (this.body[row, col] != ' ')
+                    {
+                        collisionProfile.Add(new Coordinate(this.TopLeftPosition.Row + row, this.TopLeftPosition.Col + col));
+                    }
+                }
+            }
+
+            return collisionProfile;
+        }
 
         public virtual void Update()
         {
             this.TopLeftPosition += this.Speed;
-
-           
         }
 
         public override string ToString()

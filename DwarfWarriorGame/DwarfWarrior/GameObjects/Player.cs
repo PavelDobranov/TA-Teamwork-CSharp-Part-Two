@@ -1,8 +1,8 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
-    using Interfaces;
+    using DwarfWarrior.Interfaces;
 
-    public class Player : GameObject, IRenderable, ICollidable
+    public class Player : ShootingObject, IRenderable, ICollidable, IShootable
     {
         private const int InitHealth = 3;
         private const int InitDamage = 10;
@@ -21,33 +21,37 @@
                    other.Type == ObjectType.Stealth;
         }
 
-        public override Coordinate[] GetShootingPoints()
+        public override bool CanShootAt(GameObject other)
         {
-            int currentShootingPointRow = this.TopLeftPosition.Row + 1;
-            int currentShootingPointCol = this.TopLeftPosition.Col + this.BodyWidth; ;
+            return true;
+        }
 
-            Coordinate[] shootingPoints = new Coordinate[1];
+        public override Coordinate GetShootingPoint()
+        {
+            int shootingPointRow = this.TopLeftPosition.Row + 1;
+            int shootingPointCol = this.TopLeftPosition.Col + this.BodyWidth;
 
-            shootingPoints[0] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
-
-            return shootingPoints;
+            return new Coordinate(shootingPointRow, shootingPointCol);
         }
 
         public void MoveLeft()
         {
             this.TopLeftPosition += new Coordinate(0, -1);
         }
+
         public void MoveRigth()
         {
-            this.TopLeftPosition += new Coordinate(0, +1);
+            this.TopLeftPosition += new Coordinate(0, 1);
         }
+
         public void MoveUp()
         {
             this.TopLeftPosition += new Coordinate(-1, 0);
         }
+
         public void MoveDown()
         {
-            this.TopLeftPosition += new Coordinate(+1, 0);
+            this.TopLeftPosition += new Coordinate(1, 0);
         }
     }
 }

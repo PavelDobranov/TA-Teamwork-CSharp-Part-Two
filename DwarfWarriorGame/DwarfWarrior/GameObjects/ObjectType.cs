@@ -1,4 +1,4 @@
-﻿namespace DwarfWarrior
+﻿namespace DwarfWarrior.GameObjects
 {
     public enum ObjectType
     {

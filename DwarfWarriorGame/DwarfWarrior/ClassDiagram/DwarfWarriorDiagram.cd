@@ -1,131 +1,176 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DwarfWarrior.Battlecruiser">
-    <Position X="17.5" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.ConsoleClient.ConsoleRenderer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Battlecruiser.cs</FileName>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAIAAAAEAABAAABAAAAAAEA=</HashCode>
+      <FileName>ConoleClient\ConsoleRenderer.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DwarfWarrior.Carrier">
-    <Position X="4" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.ConsoleClient.ConsoleUI" Collapsed="true">
+    <Position X="29.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Carrier.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="DwarfWarrior.ConsoleUIObjects">
-    <Position X="16.25" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAFAAIAEAAACgCAAAAAAQAAACAgBAAEBAAA=</HashCode>
-      <FileName>ConsoleUIObjects.cs</FileName>
+      <HashCode>AAAAAIAAACEAAJAEAAADgSAAAAAAQAAACggBAAEAAAA=</HashCode>
+      <FileName>ConoleClient\ConsoleUI.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DwarfWarrior.Dragon">
-    <Position X="13" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.Engine" Collapsed="true">
+    <Position X="31.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Dragon.cs</FileName>
+      <HashCode>AABAAAQAAAgABAAQAAQAAAAIEAAAIAABAgQAAAAEgAI=</HashCode>
+      <FileName>Engine.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DwarfWarrior.GameObject">
-    <Position X="10.75" Y="1.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AASACBCAAIAAAAAUAAABAAADAQAAAAAAAQAAAgAAAQA=</HashCode>
-      <FileName>GameObject.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="DwarfWarrior.GameObjectsFactory" BaseTypeListCollapsed="true">
-    <Position X="12.75" Y="1.25" Width="1.5" />
+  <Class Name="DwarfWarrior.GameObjectsFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>GameObjectsFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="DwarfWarrior.Pellet">
-    <Position X="10.75" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.DwarfWarriorMain" Collapsed="true">
+    <Position X="31.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAQAAAAAAAAAIAABAAAABAAAgAA=</HashCode>
+      <FileName>DwarfWarriorMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DwarfWarrior.GameControllers.KeyboardController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAQAEAAEAAAABAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>GameControllers\KeyboardController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DwarfWarrior.GameObjects.Battlecruiser" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Pellet.cs</FileName>
+      <FileName>GameObjects\Battlecruiser.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DwarfWarrior.Player">
-    <Position X="15.25" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.GameObjects.Carrier" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Player.cs</FileName>
+      <HashCode>EACAAAAAAAAAAAAAAAAABAAAQAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Carrier.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DwarfWarrior.Program">
-    <Position X="12.75" Y="2.75" Width="1.5" />
+  <Class Name="DwarfWarrior.GameObjects.Dragon" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DwarfWarrior.Shell">
-    <Position X="6.25" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Shell.cs</FileName>
+      <HashCode>EACAAAAAAAAAAAAAAAAABAAAQAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Dragon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DwarfWarrior.Stealth">
-    <Position X="8.5" Y="6.75" Width="1.5" />
+  <Class Name="DwarfWarrior.GameObjects.GameObject" Collapsed="true">
+    <Position X="18.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Stealth.cs</FileName>
+      <HashCode>AASACBCAAIAAAAAUAAABAAADAQAAAAAAAQAAAgAAAQA=</HashCode>
+      <FileName>GameObjects\GameObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Struct Name="DwarfWarrior.Coordinate">
-    <Position X="14.5" Y="1.25" Width="1.5" />
+  <Class Name="DwarfWarrior.GameObjects.Pellet" Collapsed="true">
+    <Position X="23" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Pellet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DwarfWarrior.GameObjects.Player" Collapsed="true">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAGAAAAAAAAAAAAAAAAABAAAQAhAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DwarfWarrior.GameObjects.Shell" Collapsed="true">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Shell.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DwarfWarrior.GameObjects.ShootingObject" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\ShootingObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DwarfWarrior.GameObjects.Stealth" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAAAAAAAAAAABAAAQAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Stealth.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="DwarfWarrior.Coordinate" Collapsed="true">
+    <Position X="27.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAwAEAAAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Coordinate.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Interface Name="DwarfWarrior.Interfaces.ICollidable">
-    <Position X="3.75" Y="1.25" Width="1.5" />
+  <Interface Name="DwarfWarrior.Interfaces.ICollidable" Collapsed="true">
+    <Position X="27.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACACACAAIAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Interfaces\ICollidable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DwarfWarrior.Interfaces.IGameObjectProducer">
-    <Position X="7.25" Y="1.25" Width="1.5" />
+  <Interface Name="DwarfWarrior.Interfaces.IGameController" Collapsed="true">
+    <Position X="29.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAAAAAQAEAAEAAAABAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Interfaces\IGameController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DwarfWarrior.Interfaces.IGameObjectProducer" Collapsed="true">
+    <Position X="31.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Interfaces\IGameObjectProducer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DwarfWarrior.Interfaces.IRenderable">
-    <Position X="5.5" Y="1.25" Width="1.5" />
+  <Interface Name="DwarfWarrior.Interfaces.IRenderable" Collapsed="true">
+    <Position X="27.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Interfaces\IRenderable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="DwarfWarrior.Interfaces.IRenderer">
-    <Position X="9" Y="1.25" Width="1.5" />
+  <Interface Name="DwarfWarrior.Interfaces.IRenderer" Collapsed="true">
+    <Position X="29.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABAAAAIAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Interfaces\IRenderer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="DwarfWarrior.ObjectType">
-    <Position X="18" Y="1.25" Width="1.5" />
+  <Interface Name="DwarfWarrior.Interfaces.IShootable" Collapsed="true">
+    <Position X="31.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IShootable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DwarfWarrior.GameObjects.ObjectType" Collapsed="true">
+    <Position X="27.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAgAAAIAAAAAABAAAAAAAAAAAAAAAAAEBAQAAAAA=</HashCode>
-      <FileName>ObjectType.cs</FileName>
+      <FileName>GameObjects\ObjectType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

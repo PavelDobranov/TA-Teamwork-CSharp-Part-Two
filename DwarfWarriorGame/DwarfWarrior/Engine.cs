@@ -3,85 +3,45 @@
     using System;
     using System.Collections.Generic;
     using System.Threading;
+    using System.Linq;
 
-    using Interfaces;
+    using DwarfWarrior.ConsoleClient;
+    using DwarfWarrior.GameObjects;
+    using DwarfWarrior.Interfaces;
 
     public class Engine
     {
+        private const int SleepTimeInMs = 100;
         private IGameController gameController;
         private IRenderer renderer;
-        private GameObjectsFactory objectFactory;
-        List<GameObject> gameObjects;
-        Player player;
+        private IGameObjectProducer objectFactory;
+        private List<GameObject> gameObjects;
+        private List<GameObject> producedObjects;
+        private Random randomGenerator;
+        private DateTime startTime;
+        private Player player;
 
-        public Engine(IGameController gameController, IRenderer renderer, GameObjectsFactory objectFactory, Player player)
+        public Engine(IGameController gameController, IRenderer renderer, IGameObjectProducer objectFactory, GameObject player)
         {
             this.gameController = gameController;
             this.renderer = renderer;
             this.objectFactory = objectFactory;
             this.gameObjects = new List<GameObject>();
-            this.player = player;
-
+            this.producedObjects = new List<GameObject>();
+            this.randomGenerator = new Random();
+            this.startTime = DateTime.Now;
+            this.player = player as Player;
+            this.AddGameObject(player);
         }
 
-        public void AddGameObject(GameObject obj)
+        public void AddGameObject(GameObject gameObject)
         {
-            this.gameObjects.Add(obj);
-        }
-
-        public void AddPlayer()
-        {
-            gameObjects.Add(this.player);
-        }
-
-        public void Run()
-        {
-            while (true)
-            {
-                foreach (var gameObject in this.gameObjects)
-                {
-                    this.renderer.AddToBuffer(gameObject);
-                }
-
-                this.renderer.RenderAll();
-
-                Thread.Sleep(ConsoleUI.GameSpeed);
-
-                gameController.ProcessInput();
-
-                this.renderer.ClearBuffer();
-
-                foreach (var gameObject in this.gameObjects)
-                {
-                    gameObject.Update();
-
-                    if (gameObject.TopLeftPosition.Col < 0 - gameObject.BodyWidth ||
-                        gameObject.TopLeftPosition.Row < 0 - gameObject.BodyHeight ||
-                        gameObject.TopLeftPosition.Col >= ConsoleUI.GameCols ||
-                        gameObject.TopLeftPosition.Row >= ConsoleUI.GameRows)
-                    {
-                        gameObject.IsDestroyed = true;
-                    }
-                }
-
-                this.gameObjects.RemoveAll(o => o.IsDestroyed);
-
-                //if (this.gameObjects.Count == 0)
-                //{
-                //    break;
-                //}
-
-            }
+            this.gameObjects.Add(gameObject);
         }
 
         public void MovePlayerUp()
         {
-            if (player.TopLeftPosition.Row > 0)
-            {
-                this.player.MoveUp();
-
-            }
-
+            this.player.MoveUp();
         }
 
         public void MovePlayerDown()
@@ -99,47 +59,164 @@
             this.player.MoveRigth();
         }
 
-        public void ObjectProduceShoot(GameObject gameObject)
+
+        public void Run()
         {
-            Coordinate[] shootingPoints = gameObject.GetShootingPoints();
-            int shootingPointSpeedRow = 0;
-            int shootingPointSpeedCol = 0;
+            while (true)
+            {
+                TimeSpan timer = DateTime.Now - this.startTime;
+
+                if (timer.Seconds == this.randomGenerator.Next(1, 10))
+                {
+                    this.ProduceRandomEnemy();
+                    this.startTime = DateTime.Now;
+                }
+
+                foreach (var gameObject in this.gameObjects)
+                {
+                    this.renderer.AddToBuffer(gameObject);
+                }
+
+                this.renderer.RenderAll();
+
+                Thread.Sleep(Engine.SleepTimeInMs);
+
+                gameController.UserInput();
+
+                this.renderer.ClearBuffer();
+
+                foreach (var gameObject in this.gameObjects)
+                {
+                    if (IsOutOfCanvas(gameObject))
+                    {
+                        gameObject.IsDestroyed = true;
+                    }
+                    else
+                    {
+                        gameObject.Update();
+                    }
+
+                    if (gameObject is ShootingObject && gameObject.Type != ObjectType.Player)
+                    {
+                        var currentObject = gameObject as ShootingObject;
+
+                        var canShoot = currentObject.CanShootAt(this.player);
+
+                        if (canShoot)
+                        {
+                            ProduceShotFrom(currentObject);
+                        }
+                    }
+                }
+
+                CollisionManager.HandleCollisions(this.gameObjects);
+
+                this.gameObjects.RemoveAll(o => o.IsDestroyed);
+                this.gameObjects.AddRange(this.producedObjects);
+                this.producedObjects.Clear();
+
+                // for testing purposes
+                //if (this.gameObjects.Count == 1)
+                //{
+                //    this.seedGameObjects();
+                //}
+            }
+        }
+
+        private bool IsOutOfCanvas(GameObject gameObject)
+        {
+            return gameObject.TopLeftPosition.Col < -gameObject.BodyWidth ||
+                   gameObject.TopLeftPosition.Row < -gameObject.BodyHeight ||
+                   gameObject.TopLeftPosition.Col >= ConsoleUI.CanvasColumns ||
+                   gameObject.TopLeftPosition.Row >= ConsoleUI.CanvasRows;
+        }
+
+        public void ProduceShotFrom(ShootingObject gameObject)
+        {
+            Coordinate shootingPoint = gameObject.GetShootingPoint();
+
             ObjectType producedObjectType = ObjectType.Pellet;
+            int producedObjectSpeedRow = 0;
+            int producedObjectSpeedCol = 0;
+            int producedObjectsCount = 0;
 
             switch (gameObject.Type)
             {
-                case ObjectType.Player:
-                    shootingPointSpeedRow = 0;
-                    shootingPointSpeedCol = 1;
-                    producedObjectType = ObjectType.Shell;
-                    break;
                 case ObjectType.Battlecruiser:
                 case ObjectType.Carrier:
-                    shootingPointSpeedRow = 0;
-                    shootingPointSpeedCol = -1;
+                    producedObjectSpeedRow = 0;
+                    producedObjectSpeedCol = -5;
+                    producedObjectsCount = 1;
                     break;
                 case ObjectType.Dragon:
-                    shootingPointSpeedRow = -1;
-                    shootingPointSpeedCol = -1;
+                    producedObjectSpeedRow = -1;
+                    producedObjectSpeedCol = -2;
+                    producedObjectsCount = 3;
                     break;
                 case ObjectType.Stealth:
-                    shootingPointSpeedRow = 1;
-                    shootingPointSpeedCol = 0;
+                    producedObjectSpeedRow = 2;
+                    producedObjectSpeedCol = 0;
+                    producedObjectsCount = 1;
+                    break;
+                case ObjectType.Player:
+                    producedObjectType = ObjectType.Shell;
+                    producedObjectSpeedRow = 0;
+                    producedObjectSpeedCol = 2;
+                    producedObjectsCount = 1;
                     break;
             }
 
-            int shootingPointRow = shootingPoints[0].Row;
-            int shootingPointCol = shootingPoints[0].Col;
+            Coordinate producedObjectSpeed;
+            GameObject producedObject;
 
-            for (int point = 0; point < shootingPoints.Length; point++)
+            for (int shot = 0; shot < producedObjectsCount; shot++)
             {
-                GameObject cuurentObject = objectFactory.ProduceObject(producedObjectType, shootingPointRow, shootingPointCol, shootingPointSpeedRow, shootingPointSpeedCol);
+                producedObjectSpeed = new Coordinate(producedObjectSpeedRow, producedObjectSpeedCol);
+                producedObject = objectFactory.ProduceObject(producedObjectType, shootingPoint, producedObjectSpeed);
 
-                this.AddGameObject(cuurentObject);
+                this.producedObjects.Add(producedObject);
 
-                ++shootingPointCol;
-                ++shootingPointSpeedCol;
+                producedObjectSpeedCol++;
             }
+        }
+
+        private void ProduceRandomEnemy()
+        {
+            Array objectTypeValues = Enum.GetValues(typeof(ObjectType));
+            ObjectType producedObjectType = (ObjectType)objectTypeValues.GetValue(this.randomGenerator.Next(1, objectTypeValues.Length - 2));
+
+            int producedObjectSpeedRow = 0;
+            int producedObjectSpeedCol = this.randomGenerator.Next(1, 3) * -1;
+            int producedObjectPositionRow = 0;
+            int producedObjectPositionCol = ConsoleUI.CanvasColumns - 1;
+
+            switch (producedObjectType)
+            {
+                case ObjectType.Battlecruiser:
+                case ObjectType.Carrier:
+                    producedObjectPositionRow = this.randomGenerator.Next(0, ConsoleUI.CanvasRows);
+                    break;
+                case ObjectType.Dragon:
+                    producedObjectPositionRow = ConsoleUI.CanvasRows - ConsoleUI.DragonBody.GetLength(1);
+                    break;
+                case ObjectType.Stealth:
+                    producedObjectPositionRow = 0;
+                    break;
+            }
+
+            Coordinate producedObjectPosition = new Coordinate(producedObjectPositionRow, producedObjectPositionCol);
+            Coordinate producedObjectSpeed = new Coordinate(producedObjectSpeedRow, producedObjectSpeedCol);
+
+            GameObject producedObject = objectFactory.ProduceObject(producedObjectType, producedObjectPosition, producedObjectSpeed);
+            this.AddGameObject(producedObject);
+        }
+
+        private void seedGameObjects()
+        {
+            this.AddGameObject(objectFactory.ProduceObject(ObjectType.Stealth, new Coordinate(0, 199), new Coordinate(0, -1)));
+            this.AddGameObject(objectFactory.ProduceObject(ObjectType.Dragon, new Coordinate(20, 199), new Coordinate(0, -1)));
+            this.AddGameObject(objectFactory.ProduceObject(ObjectType.Battlecruiser, new Coordinate(10, 199), new Coordinate(0, -1)));
+            this.AddGameObject(objectFactory.ProduceObject(ObjectType.Carrier, new Coordinate(15, 199), new Coordinate(0, -1)));
         }
     }
 }

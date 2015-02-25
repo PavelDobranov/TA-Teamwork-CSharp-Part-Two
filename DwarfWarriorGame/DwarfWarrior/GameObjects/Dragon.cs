@@ -1,12 +1,14 @@
 ﻿namespace DwarfWarrior.GameObjects
 {
-    using Interfaces;
+    using System.Collections.Generic;
 
-    public class Dragon : GameObject, IRenderable, ICollidable
+    using DwarfWarrior.Interfaces;
+
+    public class Dragon : ShootingObject, IRenderable, ICollidable, IShootable
     {
         private const int InitHealth = 1;
         private const int InitDamage = 10;
-
+       
         public Dragon(Coordinate topLeftPosition, Coordinate speed, char[,] body)
             : base(topLeftPosition, Dragon.InitHealth, Dragon.InitDamage, speed, body)
         {
@@ -14,26 +16,33 @@
 
         public override bool CanCollideWith(ICollidable other)
         {
-            return other.Type == ObjectType.Pellet ||
-                   other.Type == ObjectType.Player ||
-                   other.Type == ObjectType.Shell;
+            return other.Type == ObjectType.Player || other.Type == ObjectType.Shell;
         }
 
-        public override Coordinate[] GetShootingPoints()
+        public override bool CanShootAt(GameObject other)
         {
-            int shootingPointsCounts = 3;
-            int currentShootingPointRow = this.TopLeftPosition.Row - 1;
-            int currentShootingPointCol = this.TopLeftPosition.Col + 1;
+            Coordinate shootingPoint = this.GetShootingPoint();
+            int targetCol = other.TopLeftPosition.Col;
 
-            Coordinate[] shootingPoints = new Coordinate[shootingPointsCounts];
-
-            for (int i = 0; i < shootingPointsCounts; i++)
+            for (int col = 0; col < other.BodyWidth; col++)
             {
-                shootingPoints[i] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
-                ++currentShootingPointCol;
+                if (shootingPoint.Col == targetCol)
+                {
+                    return true;
+                }
+
+                targetCol++;
             }
 
-            return shootingPoints;
+            return false;
+        }
+
+        public override Coordinate GetShootingPoint()
+        {
+            int shootingPointRow = this.TopLeftPosition.Row - 1;
+            int shootingPointCol = this.TopLeftPosition.Col + 2;
+
+            return new Coordinate(shootingPointRow, shootingPointCol);
         }
     }
 }

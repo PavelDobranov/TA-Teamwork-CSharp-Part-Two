@@ -4,22 +4,14 @@
 
     using DwarfWarrior.Interfaces;
 
-    public class Carrier : ShootingObject, IRenderable, ICollidable, IShootable
+    public abstract class ShootingObject : GameObject, IRenderable, ICollidable, IShootable
     {
-        private const int InitHealth = 3;
-        private const int InitDamage = 10;
-
-        public Carrier(Coordinate topLeftPosition, Coordinate speed, char[,] body)
-            : base(topLeftPosition, Carrier.InitHealth, Carrier.InitDamage, speed, body)
+        public ShootingObject(Coordinate topLeftPosition, int health, int damage, Coordinate speed, char[,] body)
+            : base(topLeftPosition, health, damage, speed, body)
         {
         }
 
-        public override bool CanCollideWith(ICollidable other)
-        {
-            return other.Type == ObjectType.Player || other.Type == ObjectType.Shell;
-        }
-
-        public override bool CanShootAt(GameObject other)
+        public virtual bool CanShootAt(GameObject other)
         {
             Coordinate shootingPoint = this.GetShootingPoint();
             int targetRow = other.TopLeftPosition.Row;
@@ -37,7 +29,7 @@
             return false;
         }
 
-        public override Coordinate GetShootingPoint()
+        public virtual Coordinate GetShootingPoint()
         {
             int shootingPointRow = this.TopLeftPosition.Row + 1;
             int shootingPointCol = this.TopLeftPosition.Col - 1;

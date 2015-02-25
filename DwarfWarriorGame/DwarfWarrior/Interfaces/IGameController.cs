@@ -14,6 +14,6 @@
 
         event EventHandler OnActionPressed;
 
-        void ProcessInput();
+        void UserInput();
     }
 }

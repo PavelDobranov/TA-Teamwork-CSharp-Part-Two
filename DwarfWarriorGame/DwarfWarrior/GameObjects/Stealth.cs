@@ -2,7 +2,7 @@
 {
     using DwarfWarrior.Interfaces;
 
-    public class Stealth : GameObject, IRenderable, ICollidable
+    public class Stealth : ShootingObject, IRenderable, ICollidable, IShootable
     {
         private const int InitHealth = 1;
         private const int InitDamage = 10;
@@ -14,19 +14,33 @@
 
         public override bool CanCollideWith(ICollidable other)
         {
-            return other.Type == ObjectType.Pellet ||
-                   other.Type == ObjectType.Player ||
-                   other.Type == ObjectType.Shell;
+            return other.Type == ObjectType.Player || other.Type == ObjectType.Shell;
         }
 
-        public override Coordinate[] GetShootingPoints()
+        public override bool CanShootAt(GameObject other)
         {
-            int currentShootingPointRow = this.TopLeftPosition.Row + 1;
-            int currentShootingPointCol = this.TopLeftPosition.Col + 2;
-            Coordinate[] shootingPoints = new Coordinate[1];
-            shootingPoints[0] = new Coordinate(currentShootingPointRow, currentShootingPointCol);
+            Coordinate shootingPoint = this.GetShootingPoint();
+            int targetCol = other.TopLeftPosition.Col;
 
-            return shootingPoints;
+            for (int col = 0; col < other.BodyWidth; col++)
+            {
+                if (shootingPoint.Col == targetCol)
+                {
+                    return true;
+                }
+
+                targetCol++;
+            }
+
+            return false;
+        }
+
+        public override Coordinate GetShootingPoint()
+        {
+            int shootingPointRow = this.TopLeftPosition.Row + 1;
+            int shootingPointCol = this.TopLeftPosition.Col + 2;
+
+            return new Coordinate(shootingPointRow, shootingPointCol);
         }
     }
 }

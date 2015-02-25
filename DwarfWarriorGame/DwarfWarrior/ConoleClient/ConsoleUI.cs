@@ -4,78 +4,50 @@
 
     public static class ConsoleUI
     {
-        public const int GameRows = 20;
-        public const int GameCols = 50;
-        public const int GameSpeed = 100;
-
+        public const string GameTitle = "Dwarf Warrior";
+        public const int CanvasRows = 80;
+        public const int CanvasColumns = 200;
         public const ConsoleColor PlayerColor = ConsoleColor.Cyan;
-
         public const ConsoleColor BattlecruiserColor = ConsoleColor.Magenta;
-
         public const ConsoleColor CarrierColor = ConsoleColor.Yellow;
-
         public const ConsoleColor DragonColor = ConsoleColor.Yellow;
-
         public const ConsoleColor StealtColor = ConsoleColor.Blue;
-
         public const ConsoleColor ShellColor = ConsoleColor.Green;
-
         public const ConsoleColor PalletColor = ConsoleColor.Red;
-
-        
-        public static char[,] PlayerBody()
+        public static readonly char[,] PlayerBody = 
         {
-            return new char[,]
-            {
-                {'>', '\\', '-', '-', '(', '@', ')', '-', '\\', ' '},
-                {'>', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
-                {'>', '/', '-', '-', '-', '-', '-', '-', '/', ' '}
-            };
-        }
-
-        public static char[,] BattlecruiserBody()
+            {'>', '\\', '-', '-', '(', '@', ')', '-', '\\', ' '},
+            {'>', '|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '>'},
+            {'>', '/', '-', '-', '-', '-', '-', '-', '/', ' '}
+        };
+        public static readonly char[,] BattlecruiserBody = 
         {
-            return new char[,]
-            {
-                { ' ', '/', '^', '^', '^', '^', '^', '/' },
-                { '(', ' ', '|', ' ', '|', ' ', '|', ' ' },
-                { ' ', '\\', 'v', 'v', 'v', 'v', 'v', '\\' },
-            };
-        }
-
-        public static char[,] CarrierBody()
+            { ' ', '/', '^', '^', '^', '^', '^', '/' },
+            { '(', ' ', '|', ' ', '|', ' ', '|', ' ' },
+            { ' ', '\\', 'v', 'v', 'v', 'v', 'v', '\\' },
+        };
+        public static readonly char[,] CarrierBody = 
         {
-            return new char[,]
-            {
-                { ' ', '/', '\\', '/', '\\', '/', '\\', ' ' },
-                { '(', 'S', 'S', 'S', 'S', 'S', 'S', ')' },
-                { ' ', '\\', '/', '\\', '/', '\\', '/', ' ' },
-            };
-        }
-
-        public static char[,] DragonBody()
+            { ' ', '/', '\\', '/', '\\', '/', '\\', ' ' },
+            { '(', 'S', 'S', 'S', 'S', 'S', 'S', ')' },
+            { ' ', '\\', '/', '\\', '/', '\\', '/', ' ' },
+        };
+        public static readonly char[,] DragonBody =
         {
-            return new char[,]
-            {
-                { '/', 'o', 'o', 'o', '\\' }, 
-                { ':', ' ', ' ', ' ', ':' }, 
-                { '\\', 'V', 'V', 'V', '/' } 
-            };
-        }
+            { '/', 'o', 'o', 'o', '\\' }, 
+            { ':', ' ', ' ', ' ', ':' }, 
+            { '\\', 'V', 'V', 'V', '/' } 
+        };
+        public static readonly char[,] StealthBody = { { '(', '-', 'o', '-', ')' } };
+        public static readonly char[,] ShellBody = { { '~' } };
+        public static readonly char[,] PelletBody = { { '*' } };
 
-        public static char[,] StealtBody()
+        public static void InintGameCanvas()
         {
-            return new char[,] { { '(', '-', 'o', '-', ')' } };
-        }
+            Console.Title = ConsoleUI.GameTitle;
 
-        public static char[,] ShellBody()
-        {
-            return new char[,] { { '~' } };
-        }
-
-        public static char[,] PalletBody()
-        {
-            return new char[,] { { '*' } };
+            Console.BufferHeight = Console.WindowHeight = ConsoleUI.CanvasRows + 2;
+            Console.BufferWidth = Console.WindowWidth = ConsoleUI.CanvasColumns + 1;
         }
     }
 }

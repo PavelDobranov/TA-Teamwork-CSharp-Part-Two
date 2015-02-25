@@ -16,7 +16,7 @@
 
         public event EventHandler OnActionPressed;
 
-        public void ProcessInput()
+        public void UserInput()
         {
             while (Console.KeyAvailable)
             {

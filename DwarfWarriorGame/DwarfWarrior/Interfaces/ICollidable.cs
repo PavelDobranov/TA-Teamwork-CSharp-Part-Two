@@ -1,5 +1,9 @@
 ﻿namespace DwarfWarrior.Interfaces
 {
+    using System.Collections.Generic;
+
+    using DwarfWarrior.GameObjects;
+
     public interface ICollidable
     {
         ObjectType Type { get; }
@@ -11,5 +15,7 @@
         bool CanCollideWith(ICollidable other);
 
         void RespondToCollision(ICollidable other);
+
+        List<Coordinate> GetCollisionProfile();
     }
 }

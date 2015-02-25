@@ -3,8 +3,8 @@
     using System;
     using System.Text;
 
-    using Interfaces;
-    using GameObjects;
+    using DwarfWarrior.GameObjects;
+    using DwarfWarrior.Interfaces;
 
     public class ConsoleRenderer : IRenderer
     {

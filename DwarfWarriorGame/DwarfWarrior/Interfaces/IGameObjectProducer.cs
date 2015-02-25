@@ -1,7 +1,9 @@
 ﻿namespace DwarfWarrior.Interfaces
 {
+    using DwarfWarrior.GameObjects;
+
     public interface IGameObjectProducer
     {
-        GameObject ProduceObject(ObjectType type, int positionRow, int positionCol, int speedRow, int speedCol);
+        GameObject ProduceObject(ObjectType type, Coordinate topLeftPosition, Coordinate speed);
     }
 }
