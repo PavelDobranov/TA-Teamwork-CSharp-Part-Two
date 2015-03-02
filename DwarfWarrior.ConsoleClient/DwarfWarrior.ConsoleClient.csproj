@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{638116A1-4D4F-4B8E-9515-A0DFB7CAD54B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DwarfWarrior.ConsoleClient</RootNamespace>
+    <AssemblyName>DwarfWarrior.ConsoleClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AsciiImages\SpaceUnits\Dragon" />
+    <None Include="AsciiImages\SpaceUnits\EnemyShell" />
+    <None Include="AsciiImages\SpaceUnits\PlayerShell" />
+    <None Include="AsciiImages\SpaceUnits\Stealth" />
+    <None Include="AsciiImages\SpaceUnits\Carrier" />
+    <None Include="AsciiImages\SpaceUnits\Battlecruiser" />
+    <None Include="AsciiImages\SpaceUnits\Banshee" />
+    <None Include="AsciiImages\UI\MainMenu" />
+    <None Include="AsciiImages\UI\Cursor" />
+    <None Include="AsciiImages\UI\Logo" />
+    <None Include="AsciiImages\UI\ControlsMenu" />
+    <None Include="AsciiImages\UI\GameOverMenu" />
+    <None Include="AsciiImages\UI\Health" />
+    <None Include="AsciiImages\UI\Score" />
+    <None Include="AsciiImages\UI\HighScoreMenu" />
+    <None Include="AsciiImages\UI\BottomWall" />
+    <Compile Include="DwarfWarriorMain.cs" />
+    <Compile Include="FileManager.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameMode.cs" />
+    <Compile Include="SoundManager.cs" />
+    <Compile Include="SpaceUnitFactory.cs" />
+    <Compile Include="KeyboardController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderer.cs" />
+    <Compile Include="ConsoleUI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DwarfWarrior.Core\DwarfWarrior.Core.csproj">
+      <Project>{84ae73b2-fc91-4bec-a2f8-999c7b9911f0}</Project>
+      <Name>DwarfWarrior.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\GameLoop.wav" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
