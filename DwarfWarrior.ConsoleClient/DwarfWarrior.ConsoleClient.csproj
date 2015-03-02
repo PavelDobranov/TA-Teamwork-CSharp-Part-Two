@@ -57,6 +57,7 @@
     <None Include="AsciiImages\UI\Score" />
     <None Include="AsciiImages\UI\HighScoreMenu" />
     <None Include="AsciiImages\UI\BottomWall" />
+    <None Include="AsciiImages\SpaceUnits\Scout" />
     <Compile Include="DwarfWarriorMain.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game.cs" />
@@ -72,15 +73,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sounds\GameLoop.wav" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DwarfWarrior.Core\DwarfWarrior.Core.csproj">
       <Project>{84ae73b2-fc91-4bec-a2f8-999c7b9911f0}</Project>
       <Name>DwarfWarrior.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Sounds\GameLoop.wav" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

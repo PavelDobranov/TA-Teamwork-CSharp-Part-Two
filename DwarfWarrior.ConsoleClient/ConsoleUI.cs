@@ -79,6 +79,7 @@
         public static char[,] CarrierBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Carrier");
         public static char[,] DragonBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Dragon");
         public static char[,] StealthBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Stealth");
+        public static char[,] ScoutBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Scout");
         public static char[,] PlayerShellBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\PlayerShell");
         public static char[,] EnemyShellBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\EnemyShell");
 

@@ -7,6 +7,7 @@
         Carrier,
         Dragon,
         Stealth,
+        Scout,
         Shell
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="GameObjects\Carrier.cs" />
     <Compile Include="GameObjects\Dragon.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="GameObjects\Scout.cs" />
     <Compile Include="GameObjects\SpaceshipType.cs" />
     <Compile Include="GameObjects\Banshee.cs" />
     <Compile Include="GameObjects\Shell.cs" />
