@@ -40,5 +40,23 @@
                 }
             }
         }
+        public static Dictionary<int, string> ParseHighScore(string filePath)
+        {
+            Dictionary<int,string> highScore = new Dictionary<int,string>();
+            var reader = new StreamReader(filePath);
+            using (reader)
+            {
+                
+                string tempLine = reader.ReadLine();
+                do
+                {
+                    string[] currentLine = tempLine.Split(' ');
+                    highScore.Add(int.Parse(currentLine[0]),currentLine[1]);
+                    tempLine = reader.ReadLine();
+
+                } while (tempLine != null);
+            }
+            return highScore;
+        }
     }
 }
