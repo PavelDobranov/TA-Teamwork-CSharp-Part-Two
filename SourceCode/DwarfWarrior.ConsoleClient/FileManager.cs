@@ -1,5 +1,6 @@
 ﻿namespace DwarfWarrior.ConsoleClient
 {
+    using System.Collections.Generic;
     using System.IO;
 
     public static class FileManager
@@ -26,6 +27,17 @@
                 }
 
                 return matrix;
+            }
+        }
+        public static void SaveHighScore(Dictionary<int, string> highscore, string filePath)
+        {
+            var writer = new StreamWriter(filePath, false);
+            using (writer)
+            {
+                foreach (var item in highscore)
+                {
+                    writer.WriteLine(item.Key + " " + item.Value);
+                }
             }
         }
     }
