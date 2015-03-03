@@ -59,6 +59,7 @@
     <None Include="AsciiImages\UI\BottomWall" />
     <None Include="AsciiImages\SpaceUnits\Scout" />
     <None Include="AsciiImages\SpaceUnits\Walkir" />
+    <None Include="AsciiImages\UI\HittedHighScore" />
     <Compile Include="DwarfWarriorMain.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game.cs" />
@@ -74,7 +75,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HighScore\HighScore.txt" />
     <Content Include="Sounds\GameLoop.wav" />
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,7 @@
         private GameObject controlsMenu;
         private GameObject highScoreMenu;
         private GameObject gameOverMenu;
+        private GameObject hittedHighScore;
 
         private List<KeyValuePair<int, string>> highScore;
         private Engine gameEngine;
@@ -49,6 +50,7 @@
             this.controlsMenu = new GameObject(new Coordinate(ConsoleUI.ConstrolsMenuPositionRow, ConsoleUI.ConstrolsMenuPositionCol), ConsoleUI.ControlsMenuBody);
             this.highScoreMenu = new GameObject(new Coordinate(ConsoleUI.HighScoreMenuPositionRow, ConsoleUI.HighScoreMenuPositionCol), ConsoleUI.HighScoreMenuBody);
             this.gameOverMenu = new GameObject(new Coordinate(ConsoleUI.GameOverMenuPositionRow, ConsoleUI.GameOverMenuPositionCol), ConsoleUI.GameOverMenuBody);
+            this.hittedHighScore = new GameObject(new Coordinate(ConsoleUI.HittedHighScorePositionRow, ConsoleUI.HittedHighScorePositionCol), ConsoleUI.HittedHighScoreBody);
 
             this.highScore = FileManager.ParseHighScore();
             this.gameEngine = null;
@@ -173,6 +175,13 @@
         private void RunGameOverMenu()
         {
             this.mode = GameMode.GameOver;
+
+            if (this.player.Score > this.highScore[this.highScore.Count - 1].Key)
+            {
+                this.PrintHittedHighScore();
+                this.SavePlayerHighScore();
+            }
+
             this.menuItems = ConsoleUI.GameOverMenuItems;
             this.menuItemIndex = 0;
 
@@ -190,6 +199,32 @@
                     this.cursorMoved = !this.cursorMoved;
                 }
             }
+        }
+
+        private void SavePlayerHighScore()
+        {
+            int playerScoreIndex = 0;
+            string playerName = string.Empty;
+
+            for (int index = 0; index < this.highScore.Count; index++)
+            {
+                if (this.player.Score > this.highScore[index].Key)
+                {
+                    playerScoreIndex = index;
+
+
+                    Console.CursorVisible = true;
+                    Console.SetCursorPosition(ConsoleUI.PlayerNamePromptPositionCol, ConsoleUI.PlayerNamePromptPositionRow);
+                    playerName = Console.ReadLine().ToUpper();
+                    Console.CursorVisible = false;
+
+                    break;
+                }
+            }
+
+            this.highScore.Insert(playerScoreIndex, new KeyValuePair<int, string>(this.player.Score, playerName));
+            this.highScore.RemoveAt(this.highScore.Count - 1);
+            FileManager.SaveHighScore(this.highScore);
         }
 
         private void PrintGameLogo()
@@ -220,20 +255,30 @@
             this.renderer.AddToBuffer(this.cursor);
             this.renderer.RenderBuffer();
             this.renderer.ClearBuffer();
+            this.PrintHighScoreList();
+        }
 
+        private void PrintHittedHighScore()
+        {
+            this.renderer.AddToBuffer(this.hittedHighScore);
+            this.renderer.RenderBuffer();
+            this.renderer.ClearBuffer();
+        }
+
+        private void PrintHighScoreList()
+        {
             int highScoreListRow = ConsoleUI.HighScoreListPositionRow;
             int highScoreListCol = ConsoleUI.HighScoreListPositionCol;
 
             int highScoreListPaddingCount = 30;
             char highScoreListPaddingPaddingSymbol = '.';
-            int highScoreListPaddingColStep = 2;
+            int highScoreListPaddingRowStep = 2;
 
             foreach (var item in this.highScore)
             {
                 this.renderer.RenderAtPosition(string.Format("{0} {1}", item.Value.PadRight(highScoreListPaddingCount, highScoreListPaddingPaddingSymbol), item.Key), new Coordinate(highScoreListRow, highScoreListCol));
-                highScoreListRow += highScoreListPaddingColStep;
+                highScoreListRow += highScoreListPaddingRowStep;
             }
-
         }
 
         private void PrintGameOverMenu()

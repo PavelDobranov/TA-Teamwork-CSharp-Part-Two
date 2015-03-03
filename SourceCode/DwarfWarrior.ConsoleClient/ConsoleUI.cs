@@ -54,6 +54,12 @@
         public const int GameOverMenuCursorPositionCol = 57;
         public static GameMode[] GameOverMenuItems = { GameMode.Play, GameMode.HighScore, GameMode.MainMenu };
 
+        public static int HittedHighScorePositionRow = 10;
+        public static int HittedHighScorePositionCol = 25;
+
+        public static int PlayerNamePromptPositionRow = 29;
+        public static int PlayerNamePromptPositionCol = 73;
+
         public const int PlayerInitPositionRow = CanvasRows / 2;
         public const int PlayerInitPositionCol = 0;
         public const int PlayerInitSpeedRow = 0;
@@ -73,9 +79,10 @@
         public static char[,] BottomWallBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\BottomWall");
 
         public static char[,] MainMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\MainMenu");
-        public static char[,] ControlsMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @".\UI\ControlsMenu");
+        public static char[,] ControlsMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\ControlsMenu");
         public static char[,] HighScoreMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\HighScoreMenu");
-        public static char[,] GameOverMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"..\..\AsciiImages\UI\GameOverMenu");
+        public static char[,] HittedHighScoreBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\HittedHighScore");
+        public static char[,] GameOverMenuBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\UI\GameOverMenu");
 
         public static char[,] BansheeBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Banshee");
         public static char[,] BattlecruiserBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Battlecruiser");
