@@ -8,6 +8,7 @@
         Dragon,
         Stealth,
         Scout,
+        Walkir,
         Shell
     }
 }

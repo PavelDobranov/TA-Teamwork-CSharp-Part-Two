@@ -53,6 +53,7 @@
     <Compile Include="GameObjects\SpaceUnit.cs" />
     <Compile Include="GameObjects\Stealth.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Walkir.cs" />
     <Compile Include="Helpers\Coordinate.cs" />
     <Compile Include="Interfaces\ICollidable.cs" />
     <Compile Include="Interfaces\IGameController.cs" />

@@ -44,7 +44,9 @@
                 case SpaceUnitType.Stealth:
                     return new Stealth(position, speed, collisionGroupString, ConsoleUI.StealthBody);
                 case SpaceUnitType.Scout:
-                    return new Stealth(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
+                    return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
+                case SpaceUnitType.Walkir:
+                    return new Walkir(position, speed, collisionGroupString, ConsoleUI.WalkirBody);
                 case SpaceUnitType.Shell:
                     if (collisionGroupString == "enemy")
                     {
@@ -94,6 +96,7 @@
                 case SpaceUnitType.Battlecruiser:
                 case SpaceUnitType.Carrier:
                 case SpaceUnitType.Scout:
+                case SpaceUnitType.Walkir:
                     shellSpeed.Row = 0;
                     shellSpeed.Col = spaceship.Speed.Col * 2;
                     break;
@@ -133,6 +136,7 @@
                 case SpaceUnitType.Battlecruiser:
                 case SpaceUnitType.Carrier:
                 case SpaceUnitType.Scout:
+                case SpaceUnitType.Walkir:
                     enemyPositionRow = this.randomGenerator.Next(ConsoleUI.FlyingShipsMinPositionRow, ConsoleUI.FlyingShipsMaxPositionRow);
                     break;
                 case SpaceUnitType.Dragon:

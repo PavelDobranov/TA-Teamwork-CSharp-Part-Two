@@ -58,6 +58,7 @@
     <None Include="AsciiImages\UI\HighScoreMenu" />
     <None Include="AsciiImages\UI\BottomWall" />
     <None Include="AsciiImages\SpaceUnits\Scout" />
+    <None Include="AsciiImages\SpaceUnits\Walkir" />
     <Compile Include="DwarfWarriorMain.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game.cs" />
