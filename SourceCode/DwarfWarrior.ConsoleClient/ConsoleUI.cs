@@ -27,6 +27,9 @@
         public const int BottomWallPositionRow = 49;
         public const int BottomWallPositionCol = 0;
 
+        public const int HighScoreListPositionRow = 25;
+        public const int HighScoreListPositionCol = 60;
+
         public const int MainMenuPositionRow = 12;
         public const int MainMenuPositionCol = 63;
         public const int MainMenuCursorPositionRow = 11;

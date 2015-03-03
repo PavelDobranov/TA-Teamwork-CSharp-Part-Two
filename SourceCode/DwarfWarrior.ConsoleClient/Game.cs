@@ -1,6 +1,7 @@
 ﻿namespace DwarfWarrior.ConsoleClient
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@
         private GameObject highScoreMenu;
         private GameObject gameOverMenu;
 
+        private List<KeyValuePair<int, string>> highScore;
         private Engine gameEngine;
         private Player player;
 
@@ -48,6 +50,7 @@
             this.highScoreMenu = new GameObject(new Coordinate(ConsoleUI.HighScoreMenuPositionRow, ConsoleUI.HighScoreMenuPositionCol), ConsoleUI.HighScoreMenuBody);
             this.gameOverMenu = new GameObject(new Coordinate(ConsoleUI.GameOverMenuPositionRow, ConsoleUI.GameOverMenuPositionCol), ConsoleUI.GameOverMenuBody);
 
+            this.highScore = FileManager.ParseHighScore();
             this.gameEngine = null;
             this.player = null;
         }
@@ -217,6 +220,20 @@
             this.renderer.AddToBuffer(this.cursor);
             this.renderer.RenderBuffer();
             this.renderer.ClearBuffer();
+
+            int highScoreListRow = ConsoleUI.HighScoreListPositionRow;
+            int highScoreListCol = ConsoleUI.HighScoreListPositionCol;
+
+            int highScoreListPaddingCount = 30;
+            char highScoreListPaddingPaddingSymbol = '.';
+            int highScoreListPaddingColStep = 2;
+
+            foreach (var item in this.highScore)
+            {
+                this.renderer.RenderAtPosition(string.Format("{0} {1}", item.Value.PadRight(highScoreListPaddingCount, highScoreListPaddingPaddingSymbol), item.Key), new Coordinate(highScoreListRow, highScoreListCol));
+                highScoreListRow += highScoreListPaddingColStep;
+            }
+
         }
 
         private void PrintGameOverMenu()

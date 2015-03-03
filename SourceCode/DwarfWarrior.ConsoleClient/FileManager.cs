@@ -6,6 +6,7 @@
     public static class FileManager
     {
         private const string FilePath = @"..\..\HighScore\HighScore.txt";
+
         public static char[,] TextFileToCharMatrix(string filePath)
         {
             var reader = new StreamReader(filePath);
@@ -30,9 +31,11 @@
                 return matrix;
             }
         }
-        public static void SaveHighScore(Dictionary<int, string> highscore)
+
+        public static void SaveHighScore(List<KeyValuePair<int, string>> highscore)
         {
-            var writer = new StreamWriter(FilePath, false);
+            StreamWriter writer = new StreamWriter(FilePath, false);
+
             using (writer)
             {
                 foreach (var item in highscore)
@@ -41,22 +44,30 @@
                 }
             }
         }
-        public static Dictionary<int, string> ParseHighScore()
+
+        public static List<KeyValuePair<int, string>> ParseHighScore()
         {
-            Dictionary<int,string> highScore = new Dictionary<int,string>();
-            var reader = new StreamReader(FilePath);
+            List<KeyValuePair<int, string>> highScore = new List<KeyValuePair<int, string>>();
+
+            StreamReader reader = new StreamReader(FilePath);
+
             using (reader)
             {
-                
                 string tempLine = reader.ReadLine();
+
                 do
                 {
                     string[] currentLine = tempLine.Split(' ');
-                    highScore.Add(int.Parse(currentLine[0]),currentLine[1]);
+                    int score = int.Parse(currentLine[0]);
+                    string name = currentLine[1];
+
+                    highScore.Add(new KeyValuePair<int, string>(score, name));
+                    
                     tempLine = reader.ReadLine();
 
                 } while (tempLine != null);
             }
+
             return highScore;
         }
     }
