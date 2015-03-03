@@ -37,7 +37,7 @@
 
             for (int row = 0; row < other.BodyHeight; row++)
             {
-                if (this.GetShootingPoint().Row == targetRow && this.IsReadyForShooting())
+                if (this.GetShootingPoint().Row == targetRow && this.IsReadyForShooting() && this.TopLeftPosition.Col > other.TopLeftPosition.Col)
                 {
                     this.loopTicks = 0;
                     return true;
