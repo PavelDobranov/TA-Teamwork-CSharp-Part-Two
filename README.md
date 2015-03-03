@@ -22,7 +22,7 @@
 	 /-----//
 ```
 
-####Battlecuiser
+####Battlecruiser
 `Health: ` `Damage: `
 ```
 	          /^^^^^^^/
