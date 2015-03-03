@@ -5,6 +5,7 @@
 
     public static class FileManager
     {
+        private const string FilePath = @"..\..\HighScore\HighScore.txt";
         public static char[,] TextFileToCharMatrix(string filePath)
         {
             var reader = new StreamReader(filePath);
@@ -29,9 +30,9 @@
                 return matrix;
             }
         }
-        public static void SaveHighScore(Dictionary<int, string> highscore, string filePath)
+        public static void SaveHighScore(Dictionary<int, string> highscore)
         {
-            var writer = new StreamWriter(filePath, false);
+            var writer = new StreamWriter(FilePath, false);
             using (writer)
             {
                 foreach (var item in highscore)
@@ -40,10 +41,10 @@
                 }
             }
         }
-        public static Dictionary<int, string> ParseHighScore(string filePath)
+        public static Dictionary<int, string> ParseHighScore()
         {
             Dictionary<int,string> highScore = new Dictionary<int,string>();
-            var reader = new StreamReader(filePath);
+            var reader = new StreamReader(FilePath);
             using (reader)
             {
                 

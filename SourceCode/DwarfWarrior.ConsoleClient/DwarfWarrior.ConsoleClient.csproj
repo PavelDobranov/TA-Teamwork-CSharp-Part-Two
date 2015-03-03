@@ -74,6 +74,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HighScore\HighScore.txt" />
     <Content Include="Sounds\GameLoop.wav" />
   </ItemGroup>
   <ItemGroup>
