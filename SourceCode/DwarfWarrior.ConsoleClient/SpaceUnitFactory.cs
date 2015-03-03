@@ -24,7 +24,7 @@
         {
             this.randomGenerator = new Random();
             this.objectTypeEnumIndices = Enum.GetValues(typeof(SpaceUnitType));
-            this.EnemiesEndEnumIndex = this.objectTypeEnumIndices.Length - 1;
+            this.EnemiesEndEnumIndex = this.objectTypeEnumIndices.Length - 2;
             this.lastProducedRandomEnemyIndex = 0;
         }
 
@@ -46,7 +46,9 @@
                 case SpaceUnitType.Scout:
                     return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
                 case SpaceUnitType.Walkir:
-                    return new Walkir(position, speed, collisionGroupString, ConsoleUI.WalkirBody);
+                    return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
+                case SpaceUnitType.SpaceParticle:
+                    return new SpaceParticle(position, speed, collisionGroupString, ConsoleUI.SpaceParticleBody);
                 case SpaceUnitType.Shell:
                     if (collisionGroupString == "enemy")
                     {
@@ -120,6 +122,48 @@
 
             return producedShells;
         }
+
+        public List<SpaceUnit> ProduceExplosionFrom(Spaceship spaceship)
+        {
+            int particlesCount = 6;
+            List<SpaceUnit> producedParticles = new List<SpaceUnit>(particlesCount);
+            string explosionCollisionGroup = spaceship.CollisionGroupString == "player" ? "player" : "enemy";
+
+            int explosionPositionRow = spaceship.TopLeftPosition.Row + spaceship.BodyHeight / 2;
+            int explosionPositionCol = spaceship.TopLeftPosition.Col + spaceship.BodyWidth / 2;
+
+            int currentParticleSpeedRow = -1;
+            int currentParticleSpeedCol = -1;
+
+            SpaceParticle currentParticle;
+            Coordinate currentParticleSpeed;
+
+            for (int particle = 0; particle < particlesCount / 2; particle++)
+            {
+                currentParticleSpeed = new Coordinate(currentParticleSpeedRow, currentParticleSpeedCol);
+                currentParticle = new SpaceParticle(new Coordinate(explosionPositionRow, explosionPositionCol), currentParticleSpeed, explosionCollisionGroup, ConsoleUI.SpaceParticleBody);
+
+                producedParticles.Add(currentParticle);
+
+                currentParticleSpeedCol++;
+            }
+
+            currentParticleSpeedRow = 1;
+            currentParticleSpeedCol = 1;
+
+            for (int particle = 0; particle < particlesCount / 2; particle++)
+            {
+                currentParticleSpeed = new Coordinate(currentParticleSpeedRow, currentParticleSpeedCol);
+                currentParticle = new SpaceParticle(new Coordinate(explosionPositionRow, explosionPositionCol), currentParticleSpeed, explosionCollisionGroup, ConsoleUI.SpaceParticleBody);
+
+                producedParticles.Add(currentParticle);
+
+                currentParticleSpeedCol--;
+            }
+
+            return producedParticles;
+        }
+
 
         private int GenerateRandomEnemyIndex()
         {

@@ -9,6 +9,7 @@
         Stealth,
         Scout,
         Walkir,
-        Shell
+        Shell,
+        SpaceParticle
     }
 }

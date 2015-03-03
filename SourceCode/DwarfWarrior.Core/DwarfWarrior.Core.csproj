@@ -46,6 +46,7 @@
     <Compile Include="GameObjects\Dragon.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Scout.cs" />
+    <Compile Include="GameObjects\SpaceParticle.cs" />
     <Compile Include="GameObjects\SpaceshipType.cs" />
     <Compile Include="GameObjects\Banshee.cs" />
     <Compile Include="GameObjects\Shell.cs" />
@@ -63,6 +64,9 @@
     <Compile Include="Interfaces\IRenderer.cs" />
     <Compile Include="Interfaces\IShootable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DwarfWarriorCoreDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

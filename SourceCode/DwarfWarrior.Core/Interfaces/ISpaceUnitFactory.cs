@@ -12,5 +12,7 @@
         SpaceUnit ProduceRandomSpaceUnit(string collisionGroupString);
 
         List<SpaceUnit> ProduceShellsFrom(Spaceship spaceship);
+
+        List<SpaceUnit> ProduceExplosionFrom(Spaceship spaceship);
     }
 }

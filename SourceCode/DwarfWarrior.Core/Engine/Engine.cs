@@ -187,6 +187,8 @@
                         int score = Math.Abs(currentSpaceship.Damage * currentSpaceship.Speed.Col);
 
                         this.player.AddScore(score);
+
+                        this.producedSpaceUnits.AddRange((this.spaceUnitFactory.ProduceExplosionFrom(currentSpaceship)));
                     }
 
                     if (currentSpaceship.CanShootAt(this.player.Spaceship))

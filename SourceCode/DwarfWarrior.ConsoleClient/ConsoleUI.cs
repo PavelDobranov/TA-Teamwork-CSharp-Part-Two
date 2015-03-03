@@ -93,6 +93,7 @@
         public static char[,] WalkirBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\Walkir");
         public static char[,] PlayerShellBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\PlayerShell");
         public static char[,] EnemyShellBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\EnemyShell");
+        public static char[,] SpaceParticleBody = FileManager.TextFileToCharMatrix(ResourcesPath + @"\SpaceUnits\SpaceParticle");
 
         private const string ResourcesPath = @"..\..\AsciiImages";
     }

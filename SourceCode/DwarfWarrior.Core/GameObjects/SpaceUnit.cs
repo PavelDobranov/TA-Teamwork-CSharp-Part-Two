@@ -22,7 +22,7 @@
 
         public Coordinate Speed { get; private set; }
 
-        public int Health { get; private set; }
+        public int Health { get; protected set; }
 
         public int Damage { get; private set; }
 
