@@ -22,7 +22,7 @@
 	 /-----//
 ```
 
-###Battlecuiser
+####Battlecuiser
 `Health: ` `Damage: `
 ```
 	          /^^^^^^^/
@@ -30,7 +30,7 @@
 	          \vvvvvvv\
 ```
 
-###Carrier
+####Carrier
 `Health: ` `Damage: `
 ```
 	          (-------/((
@@ -38,7 +38,7 @@
 	          (-------\((
 ```
 
-###Scout
+####Scout
 `Health: ` `Damage: `
 ```
 	            /~~~{
@@ -46,7 +46,7 @@
 	            \~~~{
 ```
 
-###Walkir
+####Walkir
 `Health: ` `Damage: `
 ```
 	                   //
@@ -54,7 +54,7 @@
 	☻   ☻   ««________/
 ```
 
-###Stealth
+####Stealth
 `Health: ` `Damage: `
 ```
 	(-o-)
@@ -65,7 +65,7 @@
 	  ☻
 ```
 
-###Dragoon
+####Dragoon
 `Health: ` `Damage: `
 ```
 	☻   ☻   ☻
@@ -77,7 +77,3 @@
 	  :::::
 	  \╬╬╬/
 ```
-
-
-
-
