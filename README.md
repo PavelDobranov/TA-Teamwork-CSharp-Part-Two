@@ -1,9 +1,9 @@
 ![DwarfWarrior](https://github.com/PavelDobranov/TA-Teamwork-CSharp-Part-Two/blob/master/Documentation/Screens/Logo.PNG?raw=truee)
 
 ##Introduction
-The console game “Dwarf Warrior” was developed as a team project for the C# Part 2 Course in [Telerik Academy](http://telerikacademy.com/) by the “Dwarf” team. The following description contains information about the team members, the gameplay, brief programming details, and the URL of the Team Foundation Server Repository.
+The console game "Dwarf Warrior" was developed as a team project for the C# Part 2 Course in [Telerik Academy](http://telerikacademy.com/) by the “Dwarf” team.
 
-##Team members
+##Team Members
 | Name              | Username      |
 |-------------------|---------------|
 |Ivelina Popova     |iwelina.popova |
@@ -27,8 +27,8 @@ The game’s menu contains four options:
 - **EXIT**: Closes the console game
 
 ###Gameplay
-The player controls a horizontally and vertically moving warrior on the console while random-moving enemies are trying to shoot him down. The enemies must be hit 3 times and then they are dead. After a certain number of points is achieved the game becomes more difficult (the enemies are moving and shooting faster).
-The aim of the game is to defeat all enemies by shooting them with the gun and stay alive. At the beginning the player has four lives and earns point by shooting the enemies. An enemy can be killed with at least 3 precise shots.
+
+The player controls a horizontally and vertically moving warrior on the console while random generated targets are trying to shoot him down. The aim of the game is to survive as long as you can while achieving high score by destroying variety of enemies. The player has four hit points before the game ends. The enemies are moving with diferent speed and the faster enemy is, the more points you will get. As the game progresses the number of enemies spawned is increasing resulting in sure death.
 
 ###Controls
 <kbd>↑</kbd> `Move Up`
@@ -41,7 +41,7 @@ The aim of the game is to defeat all enemies by shooting them with the gun and s
 
 <kbd>Space</kbd> `Fire`
 
-###Space units
+###Space Units
 ######Banshee
 ```
 	 \--(☻)\\
@@ -103,3 +103,38 @@ The aim of the game is to defeat all enemies by shooting them with the gun and s
 ######Game Over
 ![GameOver](https://github.com/PavelDobranov/TA-Teamwork-CSharp-Part-Two/blob/master/Documentation/Screens/GameOver.PNG?raw=true)
 
+##Programming Details
+
+###Used Data Structures
+- Engine.cs
+ - `List<GameObject> gameObjects`
+ - `List<SpaceUnit> spaceUnits`
+- GameObject.cs
+ - `char[,] body`
+- Game.cs
+ - `GameMode[] menuItems`
+ - `List<KeyValuePair<int, string>> highScore`
+- Renderer.cs
+ - `char[,] buffer`
+
+###Object-Oriented Programming
+
+######DwarfWarrior.Core Diagram
+![CoreDiagram](https://github.com/PavelDobranov/TA-Teamwork-CSharp-Part-Two/blob/master/Documentation/Screens/CoreDiagram.png?raw=true)
+
+######DwarfWarrior.ConsoleClient Diagram
+![CoreDiagram](https://github.com/PavelDobranov/TA-Teamwork-CSharp-Part-Two/blob/master/Documentation/Screens/ConsoleClientDiagram.png?raw=true)
+
+###Used .NET Classes
+- Random
+- Math
+- SoundPlayer
+- StreamWriter
+- StreamReader
+
+###Using an External File
+- Text file for reading and writing the highscore
+
+###Exception Handling
+- Read / write a text file (highscore)
+- Read / open audio file
