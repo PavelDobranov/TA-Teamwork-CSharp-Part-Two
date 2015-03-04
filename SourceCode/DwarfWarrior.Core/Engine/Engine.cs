@@ -12,8 +12,8 @@
     public class Engine
     {
         private const int SleepTimeInMs = 50;
-        private const int SpawnEnemyMinTime = 3;
-        private const int SpawnEnemyMaxTime = 10;
+        private const int SpawnEnemyMinTime = 2;
+        private const int SpawnEnemyMaxTime = 8;
 
         private IGameController gameController;
         private IRenderer renderer;
@@ -123,7 +123,6 @@
                 {
                     this.ClearBuffer();
                     break;
-
                 }
             }
         }

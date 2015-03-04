@@ -46,7 +46,7 @@
                 case SpaceUnitType.Scout:
                     return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
                 case SpaceUnitType.Walkir:
-                    return new Walkir(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
+                    return new Walkir(position, speed, collisionGroupString, ConsoleUI.WalkirBody);
                 case SpaceUnitType.SpaceParticle:
                     return new SpaceParticle(position, speed, collisionGroupString, ConsoleUI.SpaceParticleBody);
                 case SpaceUnitType.Shell:

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Windows.Forms;
 
     using DwarfWarrior.Core.Engine;
     using DwarfWarrior.Core.GameObjects;
@@ -205,6 +206,7 @@
         {
             int playerScoreIndex = 0;
             string playerName = string.Empty;
+            bool validPlayerName = true;
 
             for (int index = 0; index < this.highScore.Count; index++)
             {
@@ -212,19 +214,31 @@
                 {
                     playerScoreIndex = index;
 
-
                     Console.CursorVisible = true;
                     Console.SetCursorPosition(ConsoleUI.PlayerNamePromptPositionCol, ConsoleUI.PlayerNamePromptPositionRow);
-                    playerName = Console.ReadLine().ToUpper();
+                    playerName = Console.ReadLine().ToUpper().Trim();
                     Console.CursorVisible = false;
+
+                    if (playerName == "UNKNOWN" || playerName == string.Empty || playerName.Contains(" "))
+                    {
+                        MessageBox.Show("The name cannot be \"UNKNOWN\", emty string and cannot contain spaces");
+                        validPlayerName = false;
+                    }
 
                     break;
                 }
             }
 
-            this.highScore.Insert(playerScoreIndex, new KeyValuePair<int, string>(this.player.Score, playerName));
-            this.highScore.RemoveAt(this.highScore.Count - 1);
-            FileManager.SaveHighScore(this.highScore);
+            if (validPlayerName)
+            {
+                this.highScore.Insert(playerScoreIndex, new KeyValuePair<int, string>(this.player.Score, playerName));
+                this.highScore.RemoveAt(this.highScore.Count - 1);
+                FileManager.SaveHighScore(this.highScore);
+            }
+            else
+            {
+                this.RunGameOverMenu();
+            }
         }
 
         private void PrintGameLogo()

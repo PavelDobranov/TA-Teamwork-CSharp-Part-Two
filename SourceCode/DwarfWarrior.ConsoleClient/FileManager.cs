@@ -1,7 +1,10 @@
 ﻿namespace DwarfWarrior.ConsoleClient
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Security;
+    using System.Windows.Forms;
 
     public static class FileManager
     {
@@ -10,7 +13,6 @@
         public static char[,] TextFileToCharMatrix(string filePath)
         {
             var reader = new StreamReader(filePath);
-
             using (reader)
             {
                 int matrixRows = int.Parse(reader.ReadLine());
@@ -34,14 +36,53 @@
 
         public static void SaveHighScore(List<KeyValuePair<int, string>> highscore)
         {
-            StreamWriter writer = new StreamWriter(FilePath, false);
-
-            using (writer)
+            try
             {
-                foreach (var item in highscore)
+                StreamWriter writer = new StreamWriter(FilePath, false);
+
+                using (writer)
                 {
-                    writer.WriteLine(item.Key + " " + item.Value);
+                    foreach (var item in highscore)
+                    {
+                        writer.WriteLine(item.Key + " " + item.Value);
+                    }
                 }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                MessageBox.Show("Directory not found!");
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("File not found!");
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("No file path is given!");
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Entered path is not correct!");
+            }
+            catch (PathTooLongException)
+            {
+                MessageBox.Show("Entered path is longer than 248 characters!");
+            }
+            catch (UnauthorizedAccessException uoae)
+            {
+                MessageBox.Show(uoae.Message);
+            }
+            catch (SecurityException)
+            {
+                MessageBox.Show("You don't have permission to access this file!");
+            }
+            catch (NotSupportedException)
+            {
+                MessageBox.Show("Invalid file path format!");
+            }
+            catch (IOException ioe)
+            {
+                MessageBox.Show(ioe.Message);
             }
         }
 
@@ -62,7 +103,7 @@
                     string name = currentLine[1];
 
                     highScore.Add(new KeyValuePair<int, string>(score, name));
-                    
+
                     tempLine = reader.ReadLine();
 
                 } while (tempLine != null);
