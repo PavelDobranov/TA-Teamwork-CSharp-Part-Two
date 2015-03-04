@@ -39,14 +39,14 @@
                     return new Battlecruiser(position, speed, collisionGroupString, ConsoleUI.BattlecruiserBody);
                 case SpaceUnitType.Carrier:
                     return new Carrier(position, speed, collisionGroupString, ConsoleUI.CarrierBody);
-                case SpaceUnitType.Dragon:
-                    return new Dragon(position, speed, collisionGroupString, ConsoleUI.DragonBody);
+                case SpaceUnitType.Dragoon:
+                    return new Dragoon(position, speed, collisionGroupString, ConsoleUI.DragonBody);
                 case SpaceUnitType.Stealth:
                     return new Stealth(position, speed, collisionGroupString, ConsoleUI.StealthBody);
                 case SpaceUnitType.Scout:
                     return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
                 case SpaceUnitType.Walkir:
-                    return new Scout(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
+                    return new Walkir(position, speed, collisionGroupString, ConsoleUI.ScoutBody);
                 case SpaceUnitType.SpaceParticle:
                     return new SpaceParticle(position, speed, collisionGroupString, ConsoleUI.SpaceParticleBody);
                 case SpaceUnitType.Shell:
@@ -106,7 +106,7 @@
                     shellSpeed.Row -= spaceship.Speed.Col * 2;
                     shellSpeed.Col = 0;
                     break;
-                case SpaceUnitType.Dragon:
+                case SpaceUnitType.Dragoon:
                     shellSpeed.Row += spaceship.Speed.Col * 2;
                     shellSpeed.Col = -1;
                     shellsCount = 3;
@@ -183,7 +183,7 @@
                 case SpaceUnitType.Walkir:
                     enemyPositionRow = this.randomGenerator.Next(ConsoleUI.FlyingShipsMinPositionRow, ConsoleUI.FlyingShipsMaxPositionRow);
                     break;
-                case SpaceUnitType.Dragon:
+                case SpaceUnitType.Dragoon:
                     enemyPositionRow = ConsoleUI.DragonPositionRow;
                     break;
                 case SpaceUnitType.Stealth:

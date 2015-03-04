@@ -3,7 +3,7 @@
     using DwarfWarrior.Core.Interfaces;
     using DwarfWarrior.Core.Helpers;
 
-    public class Dragon : Spaceship, IRenderable, IMovable, ICollidable, IShootable
+    public class Dragoon : Spaceship, IRenderable, IMovable, ICollidable, IShootable
     {
         private const int InitHealth = 1;
         private const int InitDamage = 10;
@@ -11,7 +11,7 @@
         private const int InitShootingPointRow = -1;
         private const int InitShootingPointCol = 2;
 
-        public Dragon(Coordinate topLeftPosition, Coordinate speed, string collisionGroupString, char[,] body)
+        public Dragoon(Coordinate topLeftPosition, Coordinate speed, string collisionGroupString, char[,] body)
             : base(topLeftPosition, speed, InitHealth, InitDamage, collisionGroupString, InitShootingPointRow, InitShootingPointCol, InitShootingTicks, body)
         {
         }

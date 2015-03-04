@@ -5,7 +5,7 @@
         Banshee,
         Battlecruiser,
         Carrier,
-        Dragon,
+        Dragoon,
         Stealth,
         Scout,
         Walkir,
